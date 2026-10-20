@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+  <defs>
+    <linearGradient id="bgHatch" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#161215"/>
+      <stop offset="100%" stop-color="#261D23"/>
+    </linearGradient>
+    <linearGradient id="crimson" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#DC2626"/>
+      <stop offset="55%" stop-color="#B91C1C"/>
+      <stop offset="100%" stop-color="#7F1D1D"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bgHatch)"/>
+  <line x1="0" y1="640" x2="1200" y2="640" stroke="#3F3F46" stroke-width="1.5"/>
+  <ellipse cx="600" cy="655" rx="410" ry="34" fill="#06080A" opacity="0.85"/>
+  <text x="60" y="70" fill="#F87171" font-family="sans-serif" font-size="16" letter-spacing="2">STUDIO EXTERIOR VIEW · PERFORMANCE HATCHBACK</text>
+  <g transform="translate(160, 245)">
+    <path d="M70 242 L135 182 L275 166 L395 92 L745 94 L835 182 L865 225 L872 308 L825 330 L95 330 L58 298 Z" fill="url(#crimson)" stroke="#FCA5A5" stroke-width="2"/>
+    <path d="M295 166 L405 106 L725 108 L805 180 Z" fill="#18181B" stroke="#52525B" stroke-width="1.5"/>
+    <line x1="545" y1="106" x2="538" y2="174" stroke="#7F1D1D" stroke-width="12"/>
+    <polygon points="76,210 142,198 148,220 82,228" fill="#F8FAFC"/>
+    <polygon points="835,195 865,204 868,240 838,235" fill="#FCA5A5"/>
+    <circle cx="220" cy="330" r="68" fill="#090B0E"/>
+    <circle cx="220" cy="330" r="46" fill="#18181B" stroke="#E4E4E7" stroke-width="3.5"/>
+    <circle cx="715" cy="330" r="68" fill="#090B0E"/>
+    <circle cx="715" cy="330" r="46" fill="#18181B" stroke="#E4E4E7" stroke-width="3.5"/>
+  </g>
+</svg>

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+  <defs>
+    <linearGradient id="bgLux" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#141210"/>
+      <stop offset="100%" stop-color="#24201C"/>
+    </linearGradient>
+    <linearGradient id="champagne" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#D6C7B2"/>
+      <stop offset="55%" stop-color="#A69680"/>
+      <stop offset="100%" stop-color="#786B59"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bgLux)"/>
+  <line x1="0" y1="640" x2="1200" y2="640" stroke="#44403C" stroke-width="1.5"/>
+  <ellipse cx="600" cy="655" rx="440" ry="36" fill="#06080A" opacity="0.85"/>
+  <text x="60" y="70" fill="#C89D54" font-family="sans-serif" font-size="16" letter-spacing="2">STUDIO EXTERIOR VIEW · FLAGSHIP LUXURY CROSSOVER</text>
+  <g transform="translate(135, 230)">
+    <path d="M68 252 L135 185 L285 168 L415 88 L790 92 L895 175 L935 208 L945 315 L890 342 L95 342 L58 310 Z" fill="url(#champagne)" stroke="#E7E5E4" stroke-width="2"/>
+    <path d="M305 168 L425 102 L770 105 L865 174 Z" fill="#1C1917" stroke="#78716C" stroke-width="1.5"/>
+    <line x1="565" y1="103" x2="555" y2="170" stroke="#786B59" stroke-width="12"/>
+    <polygon points="75,218 148,202 155,225 80,235" fill="#FEF08A"/>
+    <polygon points="905,198 938,206 940,245 908,240" fill="#EF4444"/>
+    <circle cx="235" cy="342" r="74" fill="#090B0E"/>
+    <circle cx="235" cy="342" r="50" fill="#292524" stroke="#C89D54" stroke-width="4"/>
+    <circle cx="765" cy="342" r="74" fill="#090B0E"/>
+    <circle cx="765" cy="342" r="50" fill="#292524" stroke="#C89D54" stroke-width="4"/>
+  </g>
+</svg>

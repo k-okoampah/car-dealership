@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+  <defs>
+    <linearGradient id="bgSedan" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#111318"/>
+      <stop offset="100%" stop-color="#1E232B"/>
+    </linearGradient>
+    <linearGradient id="obsidian" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#334155"/>
+      <stop offset="50%" stop-color="#1E293B"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bgSedan)"/>
+  <line x1="0" y1="640" x2="1200" y2="640" stroke="#334155" stroke-width="1.5"/>
+  <ellipse cx="600" cy="655" rx="450" ry="34" fill="#06080A" opacity="0.85"/>
+  <text x="60" y="70" fill="#94A3B8" font-family="sans-serif" font-size="16" letter-spacing="2">STUDIO EXTERIOR VIEW · EXECUTIVE SPORT SEDAN</text>
+  <g transform="translate(125, 250)">
+    <path d="M60 245 L130 192 L295 175 L435 102 L755 102 L885 178 L955 202 L965 292 L910 315 L95 315 L50 288 Z" fill="url(#obsidian)" stroke="#64748B" stroke-width="2"/>
+    <path d="M320 175 L445 114 L740 114 L855 176 Z" fill="#090D14" stroke="#475569" stroke-width="1.5"/>
+    <line x1="575" y1="114" x2="565" y2="175" stroke="#1E293B" stroke-width="12"/>
+    <polygon points="68,220 138,205 145,225 72,235" fill="#38BDF8"/>
+    <polygon points="925,198 960,206 962,232 928,228" fill="#EF4444"/>
+    <circle cx="235" cy="315" r="68" fill="#090B0E"/>
+    <circle cx="235" cy="315" r="48" fill="#1E293B" stroke="#C89D54" stroke-width="3"/>
+    <circle cx="785" cy="315" r="68" fill="#090B0E"/>
+    <circle cx="785" cy="315" r="48" fill="#1E293B" stroke="#C89D54" stroke-width="3"/>
+  </g>
+</svg>

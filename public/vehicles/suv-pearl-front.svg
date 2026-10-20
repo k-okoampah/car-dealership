@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#14181F"/>
+      <stop offset="70%" stop-color="#1E242D"/>
+      <stop offset="100%" stop-color="#111419"/>
+    </linearGradient>
+    <linearGradient id="pearl" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="60%" stop-color="#E2E8F0"/>
+      <stop offset="100%" stop-color="#CBD5E1"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bg)"/>
+  <line x1="0" y1="640" x2="1200" y2="640" stroke="#334155" stroke-width="1.5"/>
+  <ellipse cx="600" cy="655" rx="440" ry="38" fill="#07090C" opacity="0.85"/>
+  <!-- Studio Header Spec Label -->
+  <text x="60" y="70" fill="#94A3B8" font-family="sans-serif" font-size="16" letter-spacing="2">STUDIO EXTERIOR VIEW · 4WD FULL-SIZE LUXURY SUV</text>
+  <g transform="translate(130, 220)">
+    <path d="M75 260 L125 190 L265 175 L380 82 L815 82 L905 175 L945 205 L955 320 L905 348 L95 348 L62 315 Z" fill="url(#pearl)" stroke="#94A3B8" stroke-width="2"/>
+    <path d="M290 175 L392 96 L795 96 L878 175 Z" fill="#1E293B" stroke="#475569" stroke-width="2"/>
+    <line x1="530" y1="96" x2="520" y2="175" stroke="#E2E8F0" stroke-width="12"/>
+    <line x1="705" y1="96" x2="710" y2="175" stroke="#E2E8F0" stroke-width="14"/>
+    <polygon points="78,225 142,212 150,236 82,246" fill="#38BDF8"/>
+    <rect x="65" y="248" width="30" height="55" rx="4" fill="#0F172A"/>
+    <polygon points="920,202 950,210 952,248 922,242" fill="#EF4444"/>
+    <rect x="315" y="325" width="380" height="10" rx="3" fill="#475569"/>
+    <circle cx="230" cy="348" r="76" fill="#0F172A"/>
+    <circle cx="230" cy="348" r="52" fill="#334155" stroke="#CBD5E1" stroke-width="4"/>
+    <circle cx="230" cy="348" r="16" fill="#C89D54"/>
+    <circle cx="775" cy="348" r="76" fill="#0F172A"/>
+    <circle cx="775" cy="348" r="52" fill="#334155" stroke="#CBD5E1" stroke-width="4"/>
+    <circle cx="775" cy="348" r="16" fill="#C89D54"/>
+  </g>
+</svg>

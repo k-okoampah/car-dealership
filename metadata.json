@@ -1,0 +1,6 @@
+{
+  "name": "Ghana Auto Dealership Platform",
+  "description": "Full-stack automotive sales, inventory management, test-drive scheduling, and WhatsApp inquiry platform for car dealerships operating in Ghana.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

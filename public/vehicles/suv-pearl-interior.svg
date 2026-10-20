@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+  <rect width="1200" height="900" fill="#141619"/>
+  <text x="60" y="70" fill="#C89D54" font-family="sans-serif" font-size="16" letter-spacing="2">INTERIOR COCKPIT · LEATHER &amp; INFOTAINMENT CONSOLE</text>
+  <!-- Dashboard & Infotainment Architecture -->
+  <g transform="translate(100, 140)">
+    <rect x="40" y="120" width="920" height="440" rx="28" fill="#1E2229" stroke="#334155" stroke-width="2"/>
+    <!-- Upper Leather Dash Stitching -->
+    <path d="M60 220 Q500 180 940 220" fill="none" stroke="#C89D54" stroke-width="2" stroke-dasharray="8 6"/>
+    <!-- Center 12.3-inch Touch Display -->
+    <rect x="380" y="160" width="280" height="165" rx="12" fill="#0B0E14" stroke="#64748B" stroke-width="3"/>
+    <rect x="398" y="178" width="120" height="128" rx="6" fill="#1E293B"/>
+    <rect x="530" y="178" width="112" height="60" rx="6" fill="#1E293B"/>
+    <rect x="530" y="246" width="112" height="60" rx="6" fill="#C89D54" opacity="0.25"/>
+    <!-- Multifunction Steering Wheel -->
+    <circle cx="240" cy="295" r="115" fill="none" stroke="#0F1318" stroke-width="26"/>
+    <circle cx="240" cy="295" r="115" fill="none" stroke="#475569" stroke-width="3"/>
+    <circle cx="240" cy="295" r="38" fill="#1E293B" stroke="#C89D54" stroke-width="2"/>
+    <line x1="135" y1="295" x2="202" y2="295" stroke="#1E293B" stroke-width="18"/>
+    <line x1="278" y1="295" x2="345" y2="295" stroke="#1E293B" stroke-width="18"/>
+    <line x1="240" y1="333" x2="240" y2="400" stroke="#1E293B" stroke-width="18"/>
+    <!-- Center Console & Gear Selector -->
+    <rect x="420" y="355" width="200" height="190" rx="14" fill="#111418" stroke="#334155" stroke-width="2"/>
+    <rect x="485" y="395" width="70" height="95" rx="10" fill="#1E293B" stroke="#C89D54" stroke-width="2"/>
+  </g>
+</svg>

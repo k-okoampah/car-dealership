@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+  <rect width="1200" height="900" fill="#12161C"/>
+  <g stroke="#1E293B" stroke-width="1">
+    <line x1="0" y1="150" x2="1200" y2="150"/>
+    <line x1="0" y1="300" x2="1200" y2="300"/>
+    <line x1="0" y1="450" x2="1200" y2="450"/>
+    <line x1="0" y1="600" x2="1200" y2="600"/>
+    <line x1="200" y1="0" x2="200" y2="900"/>
+    <line x1="600" y1="0" x2="600" y2="900"/>
+    <line x1="1000" y1="0" x2="1000" y2="900"/>
+  </g>
+  <text x="60" y="70" fill="#C89D54" font-family="monospace" font-size="16" letter-spacing="2">SIDE PROFILE &amp; GROUND CLEARANCE SPECIFICATION</text>
+  <g transform="translate(140, 230)">
+    <path d="M60 250 L110 185 L260 170 L375 80 L820 80 L900 175 L935 205 L945 315 L895 342 L90 342 L55 310 Z" fill="#F1F5F9" stroke="#64748B" stroke-width="2.5"/>
+    <path d="M285 170 L385 95 L800 95 L875 170 Z" fill="#0F172A"/>
+    <circle cx="220" cy="342" r="72" fill="#090B0E" stroke="#94A3B8" stroke-width="5"/>
+    <circle cx="770" cy="342" r="72" fill="#090B0E" stroke="#94A3B8" stroke-width="5"/>
+    <!-- Dimension Callout Lines -->
+    <line x1="55" y1="455" x2="945" y2="455" stroke="#C89D54" stroke-width="2"/>
+    <line x1="55" y1="440" x2="55" y2="470" stroke="#C89D54" stroke-width="2"/>
+    <line x1="945" y1="440" x2="945" y2="470" stroke="#C89D54" stroke-width="2"/>
+    <text x="415" y="485" fill="#F8FAFC" font-family="monospace" font-size="18">LENGTH: 4,985 MM · WHEELBASE: 2,850 MM</text>
+  </g>
+</svg>
