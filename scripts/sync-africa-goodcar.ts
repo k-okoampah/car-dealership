@@ -80,7 +80,7 @@ function parseMake(row: AfricaGoodCarRow): string {
   if (full.includes('HONDA')) return 'Honda';
   if (full.includes('HONGQI')) return 'Hongqi';
   if (full.includes('CHERY')) return 'Chery';
-  return 'WESRROAD Direct';
+  return 'WESTROAD Direct';
 }
 
 function cleanModelName(row: AfricaGoodCarRow, make: string): string {
@@ -167,9 +167,9 @@ async function run() {
       drivetrain,
       vin: row.sku || `VIN-WESR-${row.productId}`,
       showVinPublicly: true,
-      importStatus: 'Verified Direct Sourcing / Customs Clearance Support',
+      importStatus: 'Customs Duty Paid',
       location: 'N1 Highway, Accra, Ghana / Direct Port Transit',
-      description: `Official WESRROAD verified vehicle listing (ID #${row.productId}). Backed by 15-year China-Africa automotive trade expertise with physical operations along the N1 Highway in Accra, Ghana. Inspected and verified with full export diagnostics, suspension suitability for African roads, and complete logistics and ICUMS clearance support.`,
+      description: `Official WESTROAD verified vehicle listing (ID #${row.productId}). Backed by 15-year China-Africa automotive trade expertise with physical operations along the N1 Highway in Accra, Ghana. Inspected and verified with full export diagnostics, suspension suitability for African roads, and complete logistics and ICUMS clearance support.`,
       features: JSON.stringify(featuresList),
       availabilityStatus: 'Available',
       featuredStatus: i < 8,
@@ -177,7 +177,7 @@ async function run() {
       isSampleData: false,
       images: images.map((img, idx) => ({
         imageUrl: img,
-        altText: `${year} ${make} ${model} - WESRROAD Genuine Photo ${idx + 1}`,
+        altText: `${year} ${make} ${model} - WESTROAD Genuine Photo ${idx + 1}`,
         sortOrder: idx,
       })),
     });
@@ -194,12 +194,12 @@ async function run() {
   console.log(`Saved ${processedVehicles.length} vehicles to src/data/wesrroadVehicles.json`);
 
   // Now seed/update PostgreSQL database
-  console.log('--- Updating PostgreSQL database with real WESRROAD data ---');
+  console.log('--- Updating PostgreSQL database with real WESTROAD data ---');
   try {
     // 1. Update dealershipSettings
     const existingSettings = await db.select().from(dealershipSettings).limit(1);
     const wesrroadSettings = {
-      businessName: 'WESRROAD',
+      businessName: 'WESTROAD',
       tagline: 'China–Africa Vehicle Trading Platform & Direct Sourcing Showroom',
       location: 'N1 Highway, Accra, Ghana',
       phone: '+233 59 641 6623',
@@ -210,7 +210,7 @@ async function run() {
       currency: 'GH₵',
       primaryMarket: 'Ghana',
       domain: 'africa-goodcar.com',
-      logoText: 'WESRROAD',
+      logoText: 'WESTROAD',
       heroHeadline: 'Direct China–Ghana Vehicle Sourcing & Verified Sales in Accra',
       heroDescription: 'Backed by 15-year automotive expertise with regional offices along the N1 Highway in Accra and branches across Beijing, Tianjin, Guangzhou and Chengdu. Browse verified SUVs, sedans and commercial vehicles priced transparently in GH₵.',
       aboutBackground: 'We are a China‑based vehicle‑trading platform dedicated to the African market. Backed by 15‑year expertise in China’s automotive trade, we run offices and branches across Beijing, Tianjin, Hangzhou, Guangzhou and Chengdu. We offer African customers a full suite of one‑stop solutions: vehicle sourcing, shipment against received deposit, logistics arrangement, insurance coverage and customs clearance support. Our West Africa office is strategically positioned along the N1 Highway in Accra, Ghana. Our East‑Africa branch is based at Morocco Square, Dar es Salaam, Tanzania.',
@@ -218,18 +218,18 @@ async function run() {
       aboutCustomerApproach: 'Every vehicle is verified for African road readiness, cooling efficiency, and structural integrity. Prospective buyers in Ghana are welcome to inspect vehicles physically at our N1 Highway office or coordinate direct port deliveries with complete ICUMS customs documentation.',
       aboutTeamInfo: 'Managed by cross-border automotive veterans with 15+ years experience in vehicle sourcing, logistics, and West Africa dealership operations.',
       socialLinks: JSON.stringify({
-        twitter: 'https://twitter.com/wesrroad',
-        facebook: 'https://facebook.com/wesrroad',
-        instagram: 'https://instagram.com/wesrroad',
+        twitter: 'https://twitter.com/westroad',
+        facebook: 'https://facebook.com/westroad',
+        instagram: 'https://instagram.com/westroad',
         tiktok: 'https://tiktok.com/@westroadauto',
       }),
-      seoTitle: 'WESRROAD — China–Africa Vehicle Trading & Dealership in Ghana',
-      seoDescription: 'Official WESRROAD platform. Verified vehicles, direct sourcing from China to Ghana, transparent GH₵ pricing, port clearance, and N1 Highway Accra office.',
+      seoTitle: 'WESTROAD — China–Africa Vehicle Trading & Dealership in Ghana',
+      seoDescription: 'Official WESTROAD platform. Verified vehicles, direct sourcing from China to Ghana, transparent GH₵ pricing, port clearance, and N1 Highway Accra office.',
       privacyPolicyContent: `1. DATA CONTROLLER & SCOPE
-This Privacy Policy governs how WESRROAD ("West Road Auto", "we", "our"), operating along the N1 Highway in Accra, Ghana and through official portal africa-goodcar.com, collects and processes customer inquiries in accordance with the Data Protection Act, 2012 (Act 843) of the Republic of Ghana.
+This Privacy Policy governs how WESTROAD ("West Road Auto", "we", "our"), operating along the N1 Highway in Accra, Ghana and through official portal africa-goodcar.com, collects and processes customer inquiries in accordance with the Data Protection Act, 2012 (Act 843) of the Republic of Ghana.
 
 2. INFORMATION WE COLLECT
-When you submit a vehicle inquiry, quotation request, or test-drive viewing on WESRROAD, we collect your Name, WhatsApp/Phone Number, Email Address, and specific vehicle inquiries.
+When you submit a vehicle inquiry, quotation request, or test-drive viewing on WESTROAD, we collect your Name, WhatsApp/Phone Number, Email Address, and specific vehicle inquiries.
 
 3. HOW WE USE YOUR INFORMATION
 Contact details are used strictly to provide vehicle availability updates, price quotations in GH₵, shipping and ICUMS customs estimates, and coordinate showroom visits along the N1 Highway.
@@ -237,7 +237,7 @@ Contact details are used strictly to provide vehicle availability updates, price
 4. CONFIDENTIALITY
 We never sell, rent, or trade customer information with unauthorized third parties.`,
       termsContent: `1. GENERAL TERMS
-Welcome to WESRROAD (africa-goodcar.com), the official online vehicle inventory platform of West Road Auto. By using this website, you agree to these Terms.
+Welcome to WESTROAD (africa-goodcar.com), the official online vehicle inventory platform of West Road Auto. By using this website, you agree to these Terms.
 
 2. VEHICLE PRICING & INVENTORY IN GH₵
 All vehicle prices are quoted in Ghana Cedis (GH₵) with exchange rate transparency. Vehicle specifications, mileage readings, and availability are verified from our genuine stock and direct import pipeline.
@@ -252,7 +252,7 @@ All official business transactions and inquiries are handled strictly through ou
 
     if (existingSettings.length > 0) {
       await db.update(dealershipSettings).set(wesrroadSettings as any).where(eq(dealershipSettings.id, existingSettings[0].id));
-      console.log('Updated dealershipSettings with WESRROAD official identity');
+      console.log('Updated dealershipSettings with WESTROAD official identity');
     } else {
       await db.insert(dealershipSettings).values(wesrroadSettings as any);
       console.log('Inserted dealershipSettings');
@@ -262,7 +262,7 @@ All official business transactions and inquiries are handled strictly through ou
     await db.delete(vehicles).where(eq(vehicles.isSampleData, true));
     console.log('Cleared old sample vehicles from database');
 
-    // 3. Insert real WESRROAD vehicles into DB
+    // 3. Insert real WESTROAD vehicles into DB
     for (const v of processedVehicles) {
       const existing = await db.select().from(vehicles).where(eq(vehicles.slug, v.slug)).limit(1);
       let vehicleId: number;
@@ -345,7 +345,7 @@ All official business transactions and inquiries are handled strictly through ou
     console.error('Error updating DB:', dbErr);
   }
 
-  console.log('--- WESRROAD SYNC COMPLETE ---');
+  console.log('--- WESTROAD SYNC COMPLETE ---');
 }
 
 run().catch(console.error);

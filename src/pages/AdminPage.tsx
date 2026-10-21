@@ -724,7 +724,7 @@ export const AdminPage: React.FC = () => {
             AUTHENTICATED DEALERSHIP ADMIN · {currentUser.email}
           </div>
           <h1 className="text-2xl font-bold font-display mt-1">
-            {settingsForm?.businessName || 'WESRROAD'} — Management
+            {settingsForm?.businessName || 'WESTROAD'} — Management
             Console
           </h1>
         </div>

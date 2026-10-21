@@ -7,7 +7,7 @@ import { Vehicle } from '../types';
 export const ContactPage: React.FC = () => {
   const { settings, openWhatsAppInquiry, updatePageSeo } = useSite();
   const [searchParams] = useSearchParams();
-  const brandName = settings?.businessName || 'WESRROAD';
+  const brandName = settings?.businessName || 'WESTROAD';
 
   const initialType = searchParams.get('type') || 'General Inquiry';
   const [activeMode, setActiveMode] = useState<'inquiry' | 'testdrive'>(

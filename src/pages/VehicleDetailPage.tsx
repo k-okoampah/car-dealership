@@ -584,7 +584,7 @@ export const VehicleDetailPage: React.FC = () => {
                 onClick={() =>
                   openWhatsAppInquiry(
                     `Hello ${
-                      settings?.businessName || 'WESRROAD'
+                      settings?.businessName || 'WESTROAD'
                     }, I am interested in the ${fullVehicleTitle} listed at ${formatPriceGHS(
                       effectivePrice
                     )} (${listingUrl}). Is it currently available for inspection?`,

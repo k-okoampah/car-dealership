@@ -55,7 +55,7 @@ export const HomePage: React.FC = () => {
   useEffect(() => {
     updatePageSeo(
       settings?.seoTitle ||
-        `${settings?.businessName || 'WESRROAD'} — Car Sales Dealership in Ghana`,
+        `${settings?.businessName || 'WESTROAD'} — Car Sales Dealership in Ghana`,
       settings?.seoDescription
     );
   }, [settings, updatePageSeo]);
@@ -130,7 +130,7 @@ export const HomePage: React.FC = () => {
     // Use defaults
   }
 
-  const brandName = settings?.businessName || 'WESRROAD';
+  const brandName = settings?.businessName || 'WESTROAD';
 
   return (
     <div>
@@ -190,7 +190,7 @@ export const HomePage: React.FC = () => {
                   alt={
                     displayedVehicles[0]
                       ? `${displayedVehicles[0].year} ${displayedVehicles[0].make} ${displayedVehicles[0].model}`
-                      : 'WESRROAD Featured Showroom Vehicle'
+                      : 'WESTROAD Featured Showroom Vehicle'
                   }
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />

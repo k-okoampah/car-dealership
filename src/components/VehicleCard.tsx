@@ -29,6 +29,15 @@ export const VehicleCard: React.FC<VehicleCardProps> = ({
       ? vehicle.discountPrice
       : vehicle.price;
 
+  const isExcludedStatus = (status?: string | null) => {
+    if (!status) return true;
+    const lower = status.toLowerCase();
+    return (
+      lower.includes('verified direct sourcing') ||
+      lower.includes('customs clearance support')
+    );
+  };
+
   if (viewMode === 'list') {
     return (
       <Link
@@ -51,8 +60,12 @@ export const VehicleCard: React.FC<VehicleCardProps> = ({
               </span>
               <span aria-hidden="true">·</span>
               <span>{vehicle.condition}</span>
-              <span aria-hidden="true">·</span>
-              <span>{vehicle.importStatus}</span>
+              {!isExcludedStatus(vehicle.importStatus) && (
+                <>
+                  <span aria-hidden="true">·</span>
+                  <span>{vehicle.importStatus}</span>
+                </>
+              )}
               {vehicle.availabilityStatus !== 'Available' && (
                 <>
                   <span aria-hidden="true">·</span>
@@ -185,9 +198,15 @@ export const VehicleCard: React.FC<VehicleCardProps> = ({
               </span>
             )}
           </div>
-          <span className="text-xs text-slate-500 truncate">
-            {vehicle.importStatus}
-          </span>
+          {!isExcludedStatus(vehicle.importStatus) ? (
+            <span className="text-xs text-slate-500 truncate">
+              {vehicle.importStatus}
+            </span>
+          ) : (
+            <span className="text-xs text-slate-500 truncate">
+              {vehicle.condition}
+            </span>
+          )}
         </div>
       </div>
     </Link>

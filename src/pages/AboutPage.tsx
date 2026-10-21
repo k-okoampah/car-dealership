@@ -6,7 +6,7 @@ import { DEFAULT_WHY_CHOOSE_US } from '../constants/defaults';
 
 export const AboutPage: React.FC = () => {
   const { settings, openWhatsAppInquiry, updatePageSeo } = useSite();
-  const brandName = settings?.businessName || 'WESRROAD';
+  const brandName = settings?.businessName || 'WESTROAD';
 
   useEffect(() => {
     updatePageSeo(

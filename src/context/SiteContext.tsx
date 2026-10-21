@@ -202,7 +202,7 @@ export const SiteProvider: React.FC<{ children: React.ReactNode }> = ({
 
   const updatePageSeo = useCallback(
     (title: string, description?: string) => {
-      const brand = settings?.businessName || 'WESRROAD';
+      const brand = settings?.businessName || 'WESTROAD';
       const fullTitle = title.includes(brand) ? title : `${title} | ${brand}`;
       document.title = fullTitle;
 

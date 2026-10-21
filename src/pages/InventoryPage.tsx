@@ -48,7 +48,7 @@ export const InventoryPage: React.FC = () => {
     updatePageSeo(
       `Browse Available Cars in Ghana (${total} Vehicles)`,
       `Search and filter inspected SUVs, sedans, and 4x4 pickups priced in GH₵ at ${
-        settings?.businessName || 'WESRROAD'
+        settings?.businessName || 'WESTROAD'
       }.`
     );
   }, [total, settings?.businessName, updatePageSeo]);

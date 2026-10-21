@@ -478,7 +478,7 @@ export async function ensureDatabaseSeeded() {
       const existingSettings = await db.select().from(dealershipSettings).limit(1);
       if (existingSettings.length === 0) {
         await db.insert(dealershipSettings).values({
-          businessName: 'WESRROAD',
+          businessName: 'WESTROAD',
           tagline: 'China–Africa Vehicle Trading Platform & Direct Sourcing Showroom',
           location: 'N1 Highway, Accra, Ghana',
           phone: '+233 59 641 6623',
@@ -489,7 +489,7 @@ export async function ensureDatabaseSeeded() {
           currency: 'GH₵',
           primaryMarket: 'Ghana',
           domain: 'africa-goodcar.com',
-          logoText: 'WESRROAD',
+          logoText: 'WESTROAD',
           heroHeadline:
             'Direct China–Ghana Vehicle Sourcing & Verified Sales in Accra',
           heroDescription:
@@ -512,15 +512,15 @@ export async function ensureDatabaseSeeded() {
           soldVehiclePolicy: 'show_labeled',
           googleMapsEmbedUrl: '',
           socialLinks: JSON.stringify({
-            twitter: 'https://twitter.com/wesrroad',
-            facebook: 'https://facebook.com/wesrroad',
-            instagram: 'https://instagram.com/wesrroad',
+            twitter: 'https://twitter.com/westroad',
+            facebook: 'https://facebook.com/westroad',
+            instagram: 'https://instagram.com/westroad',
             tiktok: 'https://tiktok.com/@westroadauto',
           }),
           seoTitle:
-            'WESRROAD — China–Africa Vehicle Trading & Dealership in Ghana',
+            'WESTROAD — China–Africa Vehicle Trading & Dealership in Ghana',
           seoDescription:
-            'Official WESRROAD platform. Verified vehicles, direct sourcing from China to Ghana, transparent GH₵ pricing, port clearance, and N1 Highway Accra office.',
+            'Official WESTROAD platform. Verified vehicles, direct sourcing from China to Ghana, transparent GH₵ pricing, port clearance, and N1 Highway Accra office.',
           privacyPolicyContent: DEFAULT_PRIVACY_POLICY,
           termsContent: DEFAULT_TERMS,
         });

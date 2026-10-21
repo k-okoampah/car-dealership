@@ -5,7 +5,7 @@ import { useSite } from '../context/SiteContext';
 
 export const ServicesPage: React.FC = () => {
   const { settings, services, openWhatsAppInquiry, updatePageSeo } = useSite();
-  const brandName = settings?.businessName || 'WESRROAD';
+  const brandName = settings?.businessName || 'WESTROAD';
 
   useEffect(() => {
     updatePageSeo(

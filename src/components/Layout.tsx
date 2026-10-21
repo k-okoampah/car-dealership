@@ -1,12 +1,21 @@
 import React, { useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import {
+  ArrowRight,
   Check,
+  Clock,
   Copy,
   ExternalLink,
+  FileText,
+  Mail,
+  MapPin,
   Menu,
   MessageCircle,
+  Phone,
   Send,
+  ShieldCheck,
+  Truck,
+  Wrench,
   X,
 } from 'lucide-react';
 import { useSite } from '../context/SiteContext';
@@ -48,7 +57,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({
     }
   }, [whatsAppModal.isOpen, whatsAppModal.message]);
 
-  const brandName = settings?.businessName || 'WESRROAD';
+  const brandName = settings?.businessName || 'WESTROAD';
   const configuredWaUrl = getFormattedWhatsAppUrl(
     editableMessage || whatsAppModal.message
   );
@@ -119,7 +128,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({
         >
           <img
             src="/logo.png"
-            alt="WESRROAD Logo"
+            alt="WESTROAD Logo"
             className="h-9 w-auto max-w-[150px] object-contain transition-transform group-hover:scale-105"
           />
         </Link>
@@ -417,158 +426,195 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({
         </div>
       )}
 
-      {/* Footer */}
-      <footer className="bg-[#0F1216] text-slate-300 border-t border-slate-800">
+      {/* World-Class Automotive Dealership Footer */}
+      <footer className="bg-[#0B0D11] text-slate-300 border-t border-slate-800">
+        {/* Popular Vehicle Quick Jump Directory */}
+        <div className="border-b border-slate-800/60 bg-[#0E1116]/40 py-4 hidden sm:block">
+          <div className="max-w-7xl mx-auto px-6 lg:px-10 flex flex-wrap items-center justify-between gap-4 text-xs">
+            <div className="flex flex-wrap items-center gap-2 text-slate-400">
+              <span className="font-semibold text-slate-300 uppercase tracking-wider text-[11px]">Popular Makes:</span>
+              <Link to="/inventory?make=Jetour" className="hover:text-white transition-colors">Jetour</Link>
+              <span aria-hidden="true" className="text-slate-600">·</span>
+              <Link to="/inventory?make=Toyota" className="hover:text-white transition-colors">Toyota</Link>
+              <span aria-hidden="true" className="text-slate-600">·</span>
+              <Link to="/inventory?make=Mercedes-Benz" className="hover:text-white transition-colors">Mercedes-Benz</Link>
+              <span aria-hidden="true" className="text-slate-600">·</span>
+              <Link to="/inventory?make=Honda" className="hover:text-white transition-colors">Honda</Link>
+              <span aria-hidden="true" className="text-slate-600">·</span>
+              <Link to="/inventory?make=BYD" className="hover:text-white transition-colors">BYD</Link>
+              <span aria-hidden="true" className="text-slate-600">·</span>
+              <Link to="/inventory?make=Lexus" className="hover:text-white transition-colors">Lexus</Link>
+              <span aria-hidden="true" className="text-slate-600">·</span>
+              <Link to="/inventory?make=Haval" className="hover:text-white transition-colors">Haval</Link>
+              <span aria-hidden="true" className="text-slate-600">·</span>
+              <Link to="/inventory?make=Geely" className="hover:text-white transition-colors">Geely</Link>
+            </div>
+            <div className="flex flex-wrap items-center gap-2 text-slate-400">
+              <span className="font-semibold text-slate-300 uppercase tracking-wider text-[11px]">Classes:</span>
+              <Link to="/inventory?bodyType=SUV" className="hover:text-white transition-colors">4WD SUVs</Link>
+              <span aria-hidden="true" className="text-slate-600">·</span>
+              <Link to="/inventory?bodyType=Sedan" className="hover:text-white transition-colors">Sedans</Link>
+              <span aria-hidden="true" className="text-slate-600">·</span>
+              <Link to="/inventory?bodyType=Pickup" className="hover:text-white transition-colors">Double-Cab Pickups</Link>
+              <span aria-hidden="true" className="text-slate-600">·</span>
+              <Link to="/inventory?condition=Foreign+Used" className="hover:text-white transition-colors">Foreign Used</Link>
+            </div>
+          </div>
+        </div>
+
+        {/* Main Dealership Columns */}
         <div className="max-w-7xl mx-auto px-6 lg:px-10 py-14">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-            {/* Col 1: Brand & Market */}
-            <div className="space-y-3">
-              <div className="flex items-center gap-3">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10">
+            {/* Col 1: Dealership Brand & Operational Identity (Span 4) */}
+            <div className="lg:col-span-4 space-y-4">
+              <Link to="/" className="inline-block group">
                 <img
                   src="/logo.png"
-                  alt="WESRROAD Logo"
-                  className="h-10 w-auto object-contain brightness-110"
+                  alt="WESTROAD Logo"
+                  className="h-11 w-auto object-contain brightness-110 transition-transform group-hover:scale-102"
                 />
-                <span className="text-lg font-bold text-white font-display">
-                  {brandName}
-                </span>
-              </div>
-              <p className="text-xs text-slate-400 leading-relaxed">
-                {settings?.tagline ||
-                  'China–Africa Vehicle Trading Platform & Direct Sourcing Showroom'}
-                . All prices listed transparently in{' '}
-                {settings?.currency || 'Ghana Cedi (GH₵)'}.
+              </Link>
+              <p className="text-xs text-slate-400 leading-relaxed max-w-sm">
+                {brandName} is a dedicated China–Africa vehicle trading platform connecting automobile buyers in Ghana with genuine, factory-inspected vehicles, transparent customs clearance, and direct sourcing services.
               </p>
-              <div className="pt-2 text-xs text-slate-400 space-y-1">
-                <div><strong className="text-slate-300">Ghana Office:</strong> {settings?.address || 'Along the N1 Highway, Accra, Ghana'}</div>
-                <div><strong className="text-slate-300">East Africa:</strong> Morocco Square, Dar es Salaam, Tanzania</div>
-                <div><strong className="text-slate-300">China Hubs:</strong> Beijing · Tianjin · Guangzhou · Hangzhou · Chengdu</div>
-                <div><strong className="text-slate-300">Hours:</strong> {settings?.openingHours || 'Mon – Sat: 8:00 AM – 6:00 PM GMT'}</div>
+
+              <div className="pt-2 text-xs text-slate-300 space-y-2.5">
+                <div className="flex items-start gap-2.5">
+                  <MapPin className="w-4 h-4 text-[#C89D54] shrink-0 mt-0.5" />
+                  <div>
+                    <span className="font-semibold text-white">Showroom & Inspection Yard:</span>
+                    <p className="text-slate-400 mt-0.5">{settings?.address || 'Along the N1 Highway, Accra, Ghana'}</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-2.5">
+                  <Clock className="w-4 h-4 text-[#C89D54] shrink-0 mt-0.5" />
+                  <div>
+                    <span className="font-semibold text-white">Operating Hours:</span>
+                    <p className="text-slate-400 mt-0.5">{settings?.openingHours || 'Monday – Saturday: 8:00 AM – 6:00 PM GMT'}</p>
+                  </div>
+                </div>
               </div>
             </div>
 
-            {/* Col 2: Inventory Categories */}
-            <div className="space-y-3">
-              <div className="text-xs font-semibold uppercase tracking-wider text-slate-400">
-                Vehicle Inventory
+            {/* Col 2: Vehicle Inventory (Span 2) */}
+            <div className="lg:col-span-2 space-y-3">
+              <div className="text-xs font-semibold uppercase tracking-wider text-slate-400 font-display">
+                Showroom Inventory
               </div>
               <ul className="space-y-2 text-xs text-slate-300">
                 <li>
-                  <Link
-                    to="/inventory?bodyType=SUV"
-                    className="hover:text-white transition-colors"
-                  >
+                  <Link to="/inventory" className="hover:text-white transition-colors">
+                    All Available Stock
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/inventory?bodyType=SUV" className="hover:text-white transition-colors">
                     4WD & Crossover SUVs
                   </Link>
                 </li>
                 <li>
-                  <Link
-                    to="/inventory?bodyType=Sedan"
-                    className="hover:text-white transition-colors"
-                  >
-                    Executive & Saloon Sedans
+                  <Link to="/inventory?bodyType=Sedan" className="hover:text-white transition-colors">
+                    Executive Saloons & Sedans
                   </Link>
                 </li>
                 <li>
-                  <Link
-                    to="/inventory?bodyType=Pickup"
-                    className="hover:text-white transition-colors"
-                  >
+                  <Link to="/inventory?bodyType=Pickup" className="hover:text-white transition-colors">
                     4x4 Double-Cab Pickups
                   </Link>
                 </li>
                 <li>
-                  <Link
-                    to="/inventory?bodyType=Hatchback"
-                    className="hover:text-white transition-colors"
-                  >
+                  <Link to="/inventory?bodyType=Hatchback" className="hover:text-white transition-colors">
                     Urban Hatchbacks
                   </Link>
                 </li>
                 <li>
-                  <Link
-                    to="/inventory?bodyType=Luxury"
-                    className="hover:text-white transition-colors"
-                  >
-                    Flagship Luxury Vehicles
+                  <Link to="/inventory?bodyType=Luxury" className="hover:text-white transition-colors">
+                    Flagship Luxury Models
                   </Link>
                 </li>
                 <li>
-                  <Link
-                    to="/inventory?condition=Foreign+Used"
-                    className="hover:text-white transition-colors"
-                  >
-                    Customs-Cleared Foreign Used
+                  <Link to="/inventory?condition=Foreign+Used" className="hover:text-white transition-colors">
+                    Customs Duty Paid (Foreign Used)
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/inventory?condition=Brand+New" className="hover:text-white transition-colors">
+                    Brand New & Low Mileage
                   </Link>
                 </li>
               </ul>
             </div>
 
-            {/* Col 3: Dealership Pages */}
-            <div className="space-y-3">
-              <div className="text-xs font-semibold uppercase tracking-wider text-slate-400">
-                Dealership & Policies
+            {/* Col 3: Services & Sourcing (Span 2) */}
+            <div className="lg:col-span-2 space-y-3">
+              <div className="text-xs font-semibold uppercase tracking-wider text-slate-400 font-display">
+                Services & Sourcing
               </div>
               <ul className="space-y-2 text-xs text-slate-300">
                 <li>
-                  <Link
-                    to="/about"
-                    className="hover:text-white transition-colors"
-                  >
-                    About the Dealership
+                  <Link to="/contact?type=Vehicle+Sourcing" className="hover:text-white transition-colors">
+                    Custom Vehicle Sourcing
                   </Link>
                 </li>
                 <li>
-                  <Link
-                    to="/services"
-                    className="hover:text-white transition-colors"
-                  >
-                    Services & Vehicle Sourcing
+                  <Link to="/contact?type=Trade-In+Valuation" className="hover:text-white transition-colors">
+                    Trade-In Appraisal & Valuation
                   </Link>
                 </li>
                 <li>
-                  <Link
-                    to="/faq"
-                    className="hover:text-white transition-colors"
-                  >
-                    Frequently Asked Questions
+                  <Link to="/services" className="hover:text-white transition-colors">
+                    Pre-Purchase Inspection
                   </Link>
                 </li>
                 <li>
-                  <Link
-                    to="/privacy"
-                    className="hover:text-white transition-colors"
-                  >
-                    Privacy Policy (Ghana Act 843)
+                  <Link to="/services" className="hover:text-white transition-colors">
+                    Port Clearance & ICUMS
                   </Link>
                 </li>
                 <li>
-                  <Link
-                    to="/terms"
-                    className="hover:text-white transition-colors"
-                  >
-                    Terms of Sale & Inspection
+                  <Link to="/contact?type=Test+Drive" className="hover:text-white transition-colors">
+                    Schedule Showroom Test Drive
                   </Link>
                 </li>
                 <li>
-                  <Link
-                    to="/admin"
-                    className="text-[#C89D54] hover:text-amber-300 transition-colors font-medium"
-                  >
-                    Dealer Admin Portal
+                  <Link to="/faq" className="hover:text-white transition-colors">
+                    Buyer FAQs & Guidance
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/about" className="hover:text-white transition-colors">
+                    About Our Dealership
                   </Link>
                 </li>
               </ul>
             </div>
 
-            {/* Col 4: Direct Contact & Social Links */}
-            <div className="space-y-3">
-              <div className="text-xs font-semibold uppercase tracking-wider text-slate-400">
-                Sales Desk & Contact
+            {/* Col 4: Sales Desk, WhatsApp & Support (Span 4) */}
+            <div className="lg:col-span-4 space-y-4">
+              <div className="text-xs font-semibold uppercase tracking-wider text-slate-400 font-display">
+                Sales Desk & Inquiries
               </div>
-              <div className="space-y-1.5 text-xs text-slate-300">
-                <div>
-                  <span className="text-slate-400">WhatsApp 1: </span>
+
+              <div className="p-4 bg-[#14181F] border border-slate-800 rounded-xl space-y-3">
+                <div className="flex items-center justify-between gap-3 text-xs">
+                  <div className="flex items-center gap-2">
+                    <Phone className="w-3.5 h-3.5 text-[#C89D54]" />
+                    <span className="text-slate-400">Direct Telephone:</span>
+                  </div>
+                  <a
+                    href="tel:+233596416623"
+                    className="font-mono text-white hover:text-[#C89D54] transition-colors"
+                  >
+                    +233 59 641 6623
+                  </a>
+                </div>
+
+                <div className="flex items-center justify-between gap-3 text-xs pt-2 border-t border-slate-800/80">
+                  <div className="flex items-center gap-2">
+                    <MessageCircle className="w-3.5 h-3.5 text-emerald-400" />
+                    <span className="text-slate-400">WhatsApp Sales 1:</span>
+                  </div>
                   <a
                     href="https://wa.me/2330596416623?text=Welcome%20your%20inquiry"
                     target="_blank"
@@ -578,8 +624,12 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({
                     +233 59 641 6623
                   </a>
                 </div>
-                <div>
-                  <span className="text-slate-400">WhatsApp 2: </span>
+
+                <div className="flex items-center justify-between gap-3 text-xs pt-2 border-t border-slate-800/80">
+                  <div className="flex items-center gap-2">
+                    <MessageCircle className="w-3.5 h-3.5 text-emerald-400" />
+                    <span className="text-slate-400">WhatsApp Sales 2:</span>
+                  </div>
                   <a
                     href="https://wa.me/233593592023?text=Welcome%20your%20inquiry"
                     target="_blank"
@@ -589,101 +639,65 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({
                     +233 59 359 2023
                   </a>
                 </div>
-                <div>
-                  <span className="text-slate-400">Email: </span>
-                  <a
-                    href="mailto:wrmobile@163.com"
-                    className="font-mono text-slate-300 hover:text-white hover:underline"
-                  >
-                    wrmobile@163.com
-                  </a>
-                </div>
-                <div>
-                  <span className="text-slate-400">Official Portal: </span>
-                  <a
-                    href="https://africa-goodcar.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-[#C89D54] hover:underline"
-                  >
-                    africa-goodcar.com
-                  </a>
-                </div>
               </div>
 
-              <div className="pt-2">
-                <div className="text-[11px] font-semibold uppercase tracking-wider text-slate-400 mb-2">
-                  Official Channels
-                </div>
-                <div className="flex flex-wrap gap-2 text-xs text-slate-400">
-                  <a
-                    href="https://twitter.com/wesrroad"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 rounded text-[11px] text-slate-300 transition-colors"
-                  >
-                    X (Twitter)
-                  </a>
-                  <a
-                    href="https://facebook.com/wesrroad"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 rounded text-[11px] text-slate-300 transition-colors"
-                  >
-                    Facebook
-                  </a>
-                  <a
-                    href="https://instagram.com/wesrroad"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 rounded text-[11px] text-slate-300 transition-colors"
-                  >
-                    Instagram
-                  </a>
-                  <a
-                    href="https://tiktok.com/@westroadauto"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 rounded text-[11px] text-slate-300 transition-colors"
-                  >
-                    TikTok
-                  </a>
-                </div>
-              </div>
-
-              <div className="pt-2 flex flex-col gap-2">
+              {/* Action Buttons & Social Links */}
+              <div className="space-y-3">
                 <Link
                   to="/contact"
-                  className="inline-flex items-center justify-center px-4 py-2 text-xs font-semibold bg-white text-slate-900 rounded-lg hover:bg-slate-100 transition-colors"
+                  className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 text-xs font-semibold bg-[#C89D54] hover:bg-[#B88B42] text-slate-950 rounded-lg transition-colors whitespace-nowrap"
                 >
-                  Submit Vehicle or Sourcing Inquiry
+                  <span>Submit Inquiry or Sourcing Request</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
+
+                <div>
+                  <div className="text-[11px] font-semibold uppercase tracking-wider text-slate-400 mb-2">
+                    Official Social Desk
+                  </div>
+                  <div className="flex flex-wrap gap-2 text-xs">
+                    <a
+                      href="https://twitter.com/westroad"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 rounded text-[11px] text-slate-300 transition-colors"
+                    >
+                      X (Twitter)
+                    </a>
+                    <a
+                      href="https://facebook.com/westroad"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 rounded text-[11px] text-slate-300 transition-colors"
+                    >
+                      Facebook
+                    </a>
+                    <a
+                      href="https://instagram.com/westroad"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 rounded text-[11px] text-slate-300 transition-colors"
+                    >
+                      Instagram
+                    </a>
+                    <a
+                      href="https://tiktok.com/@westroadauto"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 rounded text-[11px] text-slate-300 transition-colors"
+                    >
+                      TikTok
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
 
-          <div className="mt-12 pt-6 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+          {/* Sub-Footer / Copyright */}
+          <div className="mt-12 pt-6 border-t border-slate-800/60 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
             <div>
-              © {new Date().getFullYear()} {brandName}. Operating in{' '}
-              {settings?.location || 'Accra, Ghana'}. All rights reserved.
-            </div>
-            <div className="flex items-center gap-4">
-              <a
-                href="/sitemap.xml"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-slate-300"
-              >
-                XML Sitemap
-              </a>
-              <span>·</span>
-              <Link to="/privacy" className="hover:text-slate-300">
-                Privacy
-              </Link>
-              <span>·</span>
-              <Link to="/terms" className="hover:text-slate-300">
-                Terms
-              </Link>
+              © {new Date().getFullYear()} {brandName} (&quot;West Road Auto&quot;). Operating in {settings?.location || 'Accra, Ghana'}. All rights reserved.
             </div>
           </div>
         </div>
