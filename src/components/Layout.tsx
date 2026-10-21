@@ -464,9 +464,9 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({
 
         {/* Main Dealership Columns */}
         <div className="max-w-7xl mx-auto px-6 lg:px-10 py-14">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10">
-            {/* Col 1: Dealership Brand & Operational Identity (Span 4) */}
-            <div className="lg:col-span-4 space-y-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+            {/* Col 1: Dealership Brand & Operational Identity */}
+            <div className="space-y-4">
               <Link to="/" className="inline-block group">
                 <img
                   src="/logo.png"
@@ -474,7 +474,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({
                   className="h-11 w-auto object-contain brightness-110 transition-transform group-hover:scale-102"
                 />
               </Link>
-              <p className="text-xs text-slate-400 leading-relaxed max-w-sm">
+              <p className="text-xs text-slate-400 leading-relaxed max-w-md">
                 {brandName} is a dedicated China–Africa vehicle trading platform connecting automobile buyers in Ghana with genuine, factory-inspected vehicles, transparent customs clearance, and direct sourcing services.
               </p>
 
@@ -497,101 +497,8 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({
               </div>
             </div>
 
-            {/* Col 2: Vehicle Inventory (Span 2) */}
-            <div className="lg:col-span-2 space-y-3">
-              <div className="text-xs font-semibold uppercase tracking-wider text-slate-400 font-display">
-                Showroom Inventory
-              </div>
-              <ul className="space-y-2 text-xs text-slate-300">
-                <li>
-                  <Link to="/inventory" className="hover:text-white transition-colors">
-                    All Available Stock
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/inventory?bodyType=SUV" className="hover:text-white transition-colors">
-                    4WD & Crossover SUVs
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/inventory?bodyType=Sedan" className="hover:text-white transition-colors">
-                    Executive Saloons & Sedans
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/inventory?bodyType=Pickup" className="hover:text-white transition-colors">
-                    4x4 Double-Cab Pickups
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/inventory?bodyType=Hatchback" className="hover:text-white transition-colors">
-                    Urban Hatchbacks
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/inventory?bodyType=Luxury" className="hover:text-white transition-colors">
-                    Flagship Luxury Models
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/inventory?condition=Foreign+Used" className="hover:text-white transition-colors">
-                    Customs Duty Paid (Foreign Used)
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/inventory?condition=Brand+New" className="hover:text-white transition-colors">
-                    Brand New & Low Mileage
-                  </Link>
-                </li>
-              </ul>
-            </div>
-
-            {/* Col 3: Services & Sourcing (Span 2) */}
-            <div className="lg:col-span-2 space-y-3">
-              <div className="text-xs font-semibold uppercase tracking-wider text-slate-400 font-display">
-                Services & Sourcing
-              </div>
-              <ul className="space-y-2 text-xs text-slate-300">
-                <li>
-                  <Link to="/contact?type=Vehicle+Sourcing" className="hover:text-white transition-colors">
-                    Custom Vehicle Sourcing
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/contact?type=Trade-In+Valuation" className="hover:text-white transition-colors">
-                    Trade-In Appraisal & Valuation
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/services" className="hover:text-white transition-colors">
-                    Pre-Purchase Inspection
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/services" className="hover:text-white transition-colors">
-                    Port Clearance & ICUMS
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/contact?type=Test+Drive" className="hover:text-white transition-colors">
-                    Schedule Showroom Test Drive
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/faq" className="hover:text-white transition-colors">
-                    Buyer FAQs & Guidance
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/about" className="hover:text-white transition-colors">
-                    About Our Dealership
-                  </Link>
-                </li>
-              </ul>
-            </div>
-
-            {/* Col 4: Sales Desk, WhatsApp & Support (Span 4) */}
-            <div className="lg:col-span-4 space-y-4">
+            {/* Col 2: Sales Desk, WhatsApp & Support */}
+            <div className="space-y-4">
               <div className="text-xs font-semibold uppercase tracking-wider text-slate-400 font-display">
                 Sales Desk & Inquiries
               </div>
@@ -697,7 +604,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({
           {/* Sub-Footer / Copyright */}
           <div className="mt-12 pt-6 border-t border-slate-800/60 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
             <div>
-              © {new Date().getFullYear()} {brandName} (&quot;West Road Auto&quot;). Operating in {settings?.location || 'Accra, Ghana'}. All rights reserved.
+              © {new Date().getFullYear()} WESTROAD AUTOMOBILE. Operating in Accra, Ghana. All rights reserved.
             </div>
           </div>
         </div>
