@@ -141,22 +141,15 @@ export const HomePage: React.FC = () => {
             {/* Left Column: Editorial Headline & Direct CTAs */}
             <div className="lg:col-span-6 flex flex-col justify-between space-y-6">
               <div className="space-y-4">
-                <div className="flex flex-wrap items-center gap-2 text-xs text-[#C89D54] tracking-wide">
-                  <span>{settings?.location || '[CITY, GHANA]'}</span>
-                  <span aria-hidden="true">·</span>
-                  <span>Ghana Cedi (GH₵) Pricing</span>
-                  <span aria-hidden="true">·</span>
-                  <span>Customs Duty Verified</span>
-                </div>
 
                 <h1 className="font-display font-bold tracking-tight text-white headline-balance text-3xl sm:text-4xl lg:text-[42px] leading-[1.12]">
                   {settings?.heroHeadline ||
-                    'Inspected New & Foreign-Used Vehicles Ready for Ghanaian Roads'}
+                    'Direct China–Ghana Vehicle Sourcing & Verified Sales in Accra'}
                 </h1>
 
                 <p className="text-slate-300 text-base leading-relaxed max-w-xl">
                   {settings?.heroDescription ||
-                    'Browse customs-cleared SUVs, executive sedans, and 4x4 pickups with transparent GH₵ pricing, independent inspection support, and direct WhatsApp consultation.'}
+                    'Backed by 15-year automotive expertise with regional offices along the N1 Highway in Accra and branches across Beijing, Tianjin, Guangzhou and Chengdu. Browse verified SUVs, sedans and commercial vehicles priced transparently in GH₵.'}
                 </p>
               </div>
 
@@ -188,27 +181,48 @@ export const HomePage: React.FC = () => {
 
             {/* Right Column: Studio Showroom Hero Visual */}
             <div className="lg:col-span-6">
-              <div className="relative h-full min-h-[280px] rounded-2xl overflow-hidden border border-slate-800 bg-[#14181F]">
+              <div className="relative h-full min-h-[300px] sm:min-h-[360px] rounded-2xl overflow-hidden border border-slate-800 bg-[#14181F] group">
                 <VehicleImage
-                  src="/vehicles/hero-showroom.svg"
-                  alt="Flagship luxury SUV in dealership showroom courtyard"
-                  className="w-full h-full object-cover"
+                  src={
+                    displayedVehicles[0]?.images?.[0]?.imageUrl ||
+                    'https://shop-car-dev.oss-cn-beijing.aliyuncs.com/product/image/1790233079718.jpg'
+                  }
+                  alt={
+                    displayedVehicles[0]
+                      ? `${displayedVehicles[0].year} ${displayedVehicles[0].make} ${displayedVehicles[0].model}`
+                      : 'WESRROAD Featured Showroom Vehicle'
+                  }
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end p-6">
-                  <div className="w-full flex flex-wrap items-center justify-between gap-4 text-xs text-slate-200">
-                    <div>
-                      <span className="font-semibold text-white">
-                        Physical Yard Inspection Welcome
-                      </span>
-                      <span className="mx-2 text-slate-400">·</span>
-                      <span>Bring Your Own Diagnostic Technician</span>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex items-end p-6">
+                  <div className="w-full space-y-2">
+                    {displayedVehicles[0] && (
+                      <div className="flex items-center justify-between gap-2">
+                        <span className="inline-block px-2.5 py-1 bg-[#C89D54] text-slate-950 font-bold text-xs rounded">
+                          Featured Arrival
+                        </span>
+                        <span className="font-mono font-bold text-sm text-white">
+                          GH₵ {displayedVehicles[0].price?.toLocaleString()}
+                        </span>
+                      </div>
+                    )}
+                    <div className="flex flex-wrap items-center justify-between gap-4 text-xs text-slate-200">
+                      <div>
+                        <span className="font-semibold text-white">
+                          {displayedVehicles[0]
+                            ? `${displayedVehicles[0].year} ${displayedVehicles[0].make} ${displayedVehicles[0].model}`
+                            : 'Physical Yard Inspection Welcome'}
+                        </span>
+                        <span className="mx-2 text-slate-400">·</span>
+                        <span>N1 Highway Accra</span>
+                      </div>
+                      <Link
+                        to={displayedVehicles[0] ? `/inventory/${displayedVehicles[0].slug}` : '/inventory'}
+                        className="text-[#C89D54] hover:underline font-medium whitespace-nowrap"
+                      >
+                        View Vehicle Details →
+                      </Link>
                     </div>
-                    <Link
-                      to="/contact"
-                      className="text-[#C89D54] hover:underline font-medium whitespace-nowrap"
-                    >
-                      Book Yard Viewing →
-                    </Link>
                   </div>
                 </div>
               </div>

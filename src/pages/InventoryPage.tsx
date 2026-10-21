@@ -62,18 +62,48 @@ export const InventoryPage: React.FC = () => {
         const apiParams = new URLSearchParams(searchParams);
         if (!apiParams.has('limit')) apiParams.set('limit', '9');
         const res = await fetch(`/api/vehicles?${apiParams.toString()}`);
-        if (!res.ok) {
-          throw new Error('Failed to load vehicle inventory from database.');
-        }
-        const data = await res.json();
-        if (active) {
-          setVehicles(data.vehicles || []);
-          setTotal(data.total || 0);
-          setTotalPages(data.totalPages || 1);
+        if (res.ok) {
+          const data = await res.json();
+          if (active) {
+            setVehicles(data.vehicles || []);
+            setTotal(data.total || 0);
+            setTotalPages(data.totalPages || 1);
+          }
+        } else {
+          throw new Error('API returned non-200');
         }
       } catch (err: any) {
-        if (active) {
-          setError(err.message || 'Error loading inventory');
+        try {
+          const raw = await import('../data/wesrroadVehicles.json');
+          const allItems = (raw.default || raw) as unknown as Vehicle[];
+          let filtered = allItems;
+          if (q.trim()) {
+            const query = q.toLowerCase();
+            filtered = filtered.filter(
+              (v) =>
+                v.make.toLowerCase().includes(query) ||
+                v.model.toLowerCase().includes(query) ||
+                v.description.toLowerCase().includes(query)
+            );
+          }
+          if (make && make !== 'All') {
+            filtered = filtered.filter((v) => v.make === make);
+          }
+          if (bodyType && bodyType !== 'All') {
+            filtered = filtered.filter((v) => v.bodyType === bodyType);
+          }
+          const limit = 9;
+          const start = (page - 1) * limit;
+          const pageItems = filtered.slice(start, start + limit);
+          if (active) {
+            setVehicles(pageItems);
+            setTotal(filtered.length);
+            setTotalPages(Math.ceil(filtered.length / limit) || 1);
+          }
+        } catch {
+          if (active) {
+            setError('Error loading inventory');
+          }
         }
       } finally {
         if (active) setLoading(false);

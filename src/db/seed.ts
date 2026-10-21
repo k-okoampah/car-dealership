@@ -478,30 +478,30 @@ export async function ensureDatabaseSeeded() {
       const existingSettings = await db.select().from(dealershipSettings).limit(1);
       if (existingSettings.length === 0) {
         await db.insert(dealershipSettings).values({
-          businessName: '[DEALERSHIP NAME]',
-          tagline: 'Verified Car Sales & Import Dealership in Ghana',
-          location: '[CITY, GHANA]',
-          phone: '[PHONE NUMBER]',
-          whatsapp: '[WHATSAPP NUMBER]',
-          email: '[BUSINESS EMAIL]',
-          address: '[PHYSICAL ADDRESS]',
-          openingHours: '[BUSINESS HOURS]',
+          businessName: 'WESRROAD',
+          tagline: 'China–Africa Vehicle Trading Platform & Direct Sourcing Showroom',
+          location: 'N1 Highway, Accra, Ghana',
+          phone: '+233 59 641 6623',
+          whatsapp: '+233 59 641 6623',
+          email: 'wrmobile@163.com',
+          address: 'Along the N1 Highway, Accra, Ghana (West Africa Office)',
+          openingHours: 'Monday – Saturday: 8:00 AM – 6:00 PM GMT',
           currency: 'GH₵',
           primaryMarket: 'Ghana',
-          domain: '[DOMAIN NAME]',
-          logoText: '[DEALERSHIP NAME]',
+          domain: 'africa-goodcar.com',
+          logoText: 'WESRROAD',
           heroHeadline:
-            'Inspected New & Foreign-Used Vehicles Ready for Ghanaian Roads',
+            'Direct China–Ghana Vehicle Sourcing & Verified Sales in Accra',
           heroDescription:
-            'Browse customs-cleared SUVs, executive sedans, and 4x4 pickups priced transparently in GH₵. Schedule an independent mechanical inspection or connect with our sales desk on WhatsApp.',
+            'Backed by 15-year automotive expertise with regional offices along the N1 Highway in Accra and branches across Beijing, Tianjin, Guangzhou and Chengdu. Browse verified SUVs, sedans and commercial vehicles priced transparently in GH₵.',
           aboutBackground:
-            '[DEALERSHIP NAME] is an automotive sales and vehicle sourcing dealership operating in [CITY, GHANA]. We specialize in supplying clean-title foreign-used and brand-new vehicles selected for reliability, ground clearance, and long-term value on Ghanaian roads.',
+            'We are a China‑based vehicle‑trading platform dedicated to the African market. Backed by 15‑year expertise in China’s automotive trade, we run offices and branches across Beijing, Tianjin, Hangzhou, Guangzhou and Chengdu. We offer African customers a full suite of one‑stop solutions: vehicle sourcing, shipment against received deposit, logistics arrangement, insurance coverage and customs clearance support. Our West Africa office is strategically positioned along the N1 Highway in Accra, Ghana. Our East‑Africa branch is based at Morocco Square, Dar es Salaam, Tanzania.',
           aboutMission:
-            'To bring transparency, verifiable customs documentation, and straightforward Ghana Cedi (GH₵) pricing to vehicle acquisition in Ghana—without hidden fees or unverified mechanical claims.',
+            'To provide African automobile buyers with transparent, verified, factory-inspected vehicles with seamless port logistics, customs clearance, and dedicated local support in Accra, Ghana.',
           aboutCustomerApproach:
-            'We believe buying a vehicle should be grounded in physical verification. Every prospective buyer is invited to inspect the vehicle chassis, run computer diagnostics, verify ICUMS customs records, and complete a supervised test drive before making a decision.',
+            'Every vehicle is verified for African road readiness, cooling efficiency, and structural integrity. Prospective buyers in Ghana are welcome to inspect vehicles physically at our N1 Highway office or coordinate direct port deliveries with complete ICUMS customs documentation.',
           aboutTeamInfo:
-            'Update team profiles and management contacts in the Admin Dashboard -> Content & Settings tab.',
+            'Managed by cross-border automotive veterans with 15+ years experience in vehicle sourcing, logistics, and West Africa dealership operations.',
           whyChooseUs: JSON.stringify(DEFAULT_WHY_CHOOSE_US),
           buyingProcess: JSON.stringify(DEFAULT_BUYING_PROCESS),
           financingOffered: false,
@@ -512,15 +512,15 @@ export async function ensureDatabaseSeeded() {
           soldVehiclePolicy: 'show_labeled',
           googleMapsEmbedUrl: '',
           socialLinks: JSON.stringify({
-            instagram: '',
-            facebook: '',
-            linkedin: '',
-            twitter: '',
+            twitter: 'https://twitter.com/wesrroad',
+            facebook: 'https://facebook.com/wesrroad',
+            instagram: 'https://instagram.com/wesrroad',
+            tiktok: 'https://tiktok.com/@westroadauto',
           }),
           seoTitle:
-            '[DEALERSHIP NAME] — Verified Car Sales & Import Dealership in [CITY, GHANA]',
+            'WESRROAD — China–Africa Vehicle Trading & Dealership in Ghana',
           seoDescription:
-            'Browse customs-cleared foreign-used and brand-new SUVs, sedans, and pickups in Ghana. View specs in GH₵, book inspections, and chat on WhatsApp.',
+            'Official WESRROAD platform. Verified vehicles, direct sourcing from China to Ghana, transparent GH₵ pricing, port clearance, and N1 Highway Accra office.',
           privacyPolicyContent: DEFAULT_PRIVACY_POLICY,
           termsContent: DEFAULT_TERMS,
         });
@@ -553,29 +553,35 @@ export async function ensureDatabaseSeeded() {
 }
 
 export async function seedSampleVehiclesInternal() {
-  for (const item of SAMPLE_VEHICLES_DATA) {
-    const existing = await db
-      .select()
-      .from(vehicles)
-      .where(eq(vehicles.slug, item.slug))
-      .limit(1);
-    if (existing.length === 0) {
-      const { images, ...vehicleData } = item;
-      const [inserted] = await db
-        .insert(vehicles)
-        .values(vehicleData)
-        .returning();
+  try {
+    const rawData = await import('../data/wesrroadVehicles.json');
+    const items = (rawData.default || rawData) as any[];
+    for (const item of items) {
+      const existing = await db
+        .select()
+        .from(vehicles)
+        .where(eq(vehicles.slug, item.slug))
+        .limit(1);
+      if (existing.length === 0) {
+        const { images, productId, ...vehicleData } = item;
+        const [inserted] = await db
+          .insert(vehicles)
+          .values(vehicleData)
+          .returning();
 
-      if (images && images.length > 0) {
-        await db.insert(vehicleImages).values(
-          images.map((img) => ({
-            vehicleId: inserted.id,
-            imageUrl: img.imageUrl,
-            altText: img.altText,
-            sortOrder: img.sortOrder,
-          }))
-        );
+        if (images && images.length > 0) {
+          await db.insert(vehicleImages).values(
+            images.map((img: any) => ({
+              vehicleId: inserted.id,
+              imageUrl: img.imageUrl,
+              altText: img.altText,
+              sortOrder: img.sortOrder,
+            }))
+          );
+        }
       }
     }
+  } catch (err) {
+    console.error('Failed to seed from wesrroadVehicles.json:', err);
   }
 }

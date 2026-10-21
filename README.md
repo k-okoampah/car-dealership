@@ -55,9 +55,28 @@ A complete, full-stack car sales dealership, inventory management, test-drive bo
    npm run start
    ```
 
+## Vercel Deployment
+
+This project is configured with `vercel.json` and a serverless API handler (`api/index.ts`) for seamless 1-click Vercel deployment.
+
+1. **Push Code to GitHub**:
+   Ensure all changes are committed and pushed to your GitHub repository.
+2. **Import into Vercel**:
+   Go to [Vercel Dashboard](https://vercel.com/dashboard) and click **Add New... → Project**, then import your repository.
+3. **Configure Environment Variables in Vercel**:
+   In the Vercel project settings (**Settings → Environment Variables**), add:
+   - `SQL_HOST`: Your Cloud SQL public IP or database host address
+   - `SQL_USER`: Your PostgreSQL database username
+   - `SQL_PASSWORD`: Your PostgreSQL database password
+   - `SQL_DB_NAME`: Your PostgreSQL database name
+   - `APP_URL`: Your Vercel deployment URL (e.g., `https://your-dealership.vercel.app`)
+4. **Deploy**:
+   Click **Deploy**. Vercel will automatically run `npm run build` to compile the Vite frontend into `dist/`, and route all `/api/*`, `/sitemap.xml`, and `/robots.txt` requests through `api/index.ts`.
+
 ## External Services & Optional Configuration
 
 - **Google Cloud SQL (PostgreSQL)** & **Firebase Authentication**: Provisioned and configured via `firebase-applet-config.json` and `SQL_*` runtime environment variables.
+- **Synced Live Inventory**: 16 authentic vehicles imported directly from `https://africa-goodcar.com` with high-resolution multi-photo galleries, exact GHS (GH₵) pricing, mileage, VIN, and powertrain specifications.
 - **Transactional Email Notifications (Optional)**: Set `EMAIL_NOTIFICATIONS_ENABLED="true"`, `RESEND_API_KEY`, and `DEALERSHIP_NOTIFICATION_EMAIL` in `.env` to send email alerts on every new inquiry or test-drive booking.
 - **Google Maps Embed (Optional)**: Paste your verified Google Maps iframe `src` URL in **Admin Dashboard → Business Info, CMS & SEO** to display an interactive map on `/contact`.
 - **Database Backups & Recovery**: Point-in-time recovery and automated daily snapshots are managed at the Cloud SQL instance level. Administrators can also export inquiry records to CSV directly from `/admin`.

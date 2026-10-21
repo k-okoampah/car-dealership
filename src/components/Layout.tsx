@@ -111,12 +111,17 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({
     <div className="min-h-screen flex flex-col bg-[#F8F8F7] text-[#111315]">
       {/* Strict 3-Zone Top Bar Contract */}
       <header className="sticky top-0 z-40 h-16 bg-white/95 backdrop-blur border-b border-slate-200 px-6 lg:px-10 flex items-center justify-between gap-8">
-        {/* Zone 1: Single text element wordmark */}
+        {/* Zone 1: Official Logo */}
         <Link
           to="/"
-          className="text-lg font-bold tracking-tight text-slate-900 font-display whitespace-nowrap shrink-0"
+          className="flex items-center tracking-tight text-slate-900 font-display whitespace-nowrap shrink-0 group"
+          aria-label="Home"
         >
-          {brandName}
+          <img
+            src="/logo.png"
+            alt="WESRROAD Logo"
+            className="h-9 w-auto max-w-[150px] object-contain transition-transform group-hover:scale-105"
+          />
         </Link>
 
         {/* Zone 2: 5 concise single-line text navigation links */}
@@ -418,19 +423,27 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
             {/* Col 1: Brand & Market */}
             <div className="space-y-3">
-              <div className="text-lg font-bold text-white font-display">
-                {brandName}
+              <div className="flex items-center gap-3">
+                <img
+                  src="/logo.png"
+                  alt="WESRROAD Logo"
+                  className="h-10 w-auto object-contain brightness-110"
+                />
+                <span className="text-lg font-bold text-white font-display">
+                  {brandName}
+                </span>
               </div>
               <p className="text-xs text-slate-400 leading-relaxed">
                 {settings?.tagline ||
-                  'Verified Car Sales & Import Dealership in Ghana'}
-                . All prices listed in{' '}
+                  'China–Africa Vehicle Trading Platform & Direct Sourcing Showroom'}
+                . All prices listed transparently in{' '}
                 {settings?.currency || 'Ghana Cedi (GH₵)'}.
               </p>
               <div className="pt-2 text-xs text-slate-400 space-y-1">
-                <div>Location: {settings?.location || '[CITY, GHANA]'}</div>
-                <div>Address: {settings?.address || '[PHYSICAL ADDRESS]'}</div>
-                <div>Hours: {settings?.openingHours || '[BUSINESS HOURS]'}</div>
+                <div><strong className="text-slate-300">Ghana Office:</strong> {settings?.address || 'Along the N1 Highway, Accra, Ghana'}</div>
+                <div><strong className="text-slate-300">East Africa:</strong> Morocco Square, Dar es Salaam, Tanzania</div>
+                <div><strong className="text-slate-300">China Hubs:</strong> Beijing · Tianjin · Guangzhou · Hangzhou · Chengdu</div>
+                <div><strong className="text-slate-300">Hours:</strong> {settings?.openingHours || 'Mon – Sat: 8:00 AM – 6:00 PM GMT'}</div>
               </div>
             </div>
 
@@ -548,16 +561,81 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({
               </ul>
             </div>
 
-            {/* Col 4: Direct Contact */}
+            {/* Col 4: Direct Contact & Social Links */}
             <div className="space-y-3">
               <div className="text-xs font-semibold uppercase tracking-wider text-slate-400">
-                Sales Desk & Inquiries
+                Sales Desk & Contact
               </div>
-              <div className="space-y-2 text-xs text-slate-300 font-mono">
-                <div>Tel: {settings?.phone || '[PHONE NUMBER]'}</div>
-                <div>WhatsApp: {settings?.whatsapp || '[WHATSAPP NUMBER]'}</div>
-                <div>Email: {settings?.email || '[BUSINESS EMAIL]'}</div>
+              <div className="space-y-1.5 text-xs text-slate-300">
+                <div>
+                  <span className="text-slate-400">WhatsApp 1: </span>
+                  <a
+                    href="https://wa.me/2330596416623?text=Welcome%20your%20inquiry"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-mono text-emerald-400 hover:underline"
+                  >
+                    +233 59 641 6623
+                  </a>
+                </div>
+                <div>
+                  <span className="text-slate-400">WhatsApp 2: </span>
+                  <a
+                    href="https://wa.me/233593592023?text=Welcome%20your%20inquiry"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-mono text-emerald-400 hover:underline"
+                  >
+                    +233 59 359 2023
+                  </a>
+                </div>
+                <div>
+                  <span className="text-slate-400">Email: </span>
+                  <a
+                    href="mailto:wrmobile@163.com"
+                    className="font-mono text-slate-300 hover:text-white hover:underline"
+                  >
+                    wrmobile@163.com
+                  </a>
+                </div>
+                <div>
+                  <span className="text-slate-400">Official Portal: </span>
+                  <a
+                    href="https://africa-goodcar.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[#C89D54] hover:underline"
+                  >
+                    africa-goodcar.com
+                  </a>
+                </div>
               </div>
+
+              <div className="pt-2">
+                <div className="text-[11px] font-semibold uppercase tracking-wider text-slate-400 mb-2">
+                  Official Channels
+                </div>
+                <div className="flex flex-wrap gap-2 text-xs text-slate-400">
+                  <span className="px-2 py-1 bg-slate-800 rounded text-[11px] text-slate-300">
+                    X · WESRROAD
+                  </span>
+                  <span className="px-2 py-1 bg-slate-800 rounded text-[11px] text-slate-300">
+                    Facebook · WESRROAD
+                  </span>
+                  <span className="px-2 py-1 bg-slate-800 rounded text-[11px] text-slate-300">
+                    Instagram · WESRROAD
+                  </span>
+                  <a
+                    href="https://tiktok.com/@westroadauto"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-2 py-1 bg-slate-800 hover:bg-slate-700 rounded text-[11px] text-slate-300 transition-colors"
+                  >
+                    TikTok · @westroadauto
+                  </a>
+                </div>
+              </div>
+
               <div className="pt-2 flex flex-col gap-2">
                 <Link
                   to="/contact"

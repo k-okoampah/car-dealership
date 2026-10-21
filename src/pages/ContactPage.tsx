@@ -201,43 +201,76 @@ export const ContactPage: React.FC = () => {
                 </dd>
               </div>
               <div className="pb-3 border-b border-slate-100">
-                <dt className="text-xs text-slate-500">Telephone Number</dt>
+                <dt className="text-xs text-slate-500">Telephone / Sales Desk</dt>
                 <dd className="font-mono font-semibold text-slate-900 mt-0.5">
-                  {settings?.phone || '[PHONE NUMBER]'}
+                  <a href={`tel:${settings?.phone || '+233596416623'}`} className="hover:underline">
+                    {settings?.phone || '+233 59 641 6623'}
+                  </a>
                 </dd>
               </div>
               <div className="pb-3 border-b border-slate-100">
-                <dt className="text-xs text-slate-500">WhatsApp Number</dt>
-                <dd className="font-mono font-semibold text-slate-900 mt-0.5">
-                  {settings?.whatsapp || '[WHATSAPP NUMBER]'}
+                <dt className="text-xs text-slate-500">WhatsApp Sales Accounts</dt>
+                <dd className="font-mono font-semibold text-slate-900 mt-0.5 space-y-1">
+                  <div>
+                    <a
+                      href="https://wa.me/2330596416623?text=Welcome%20your%20inquiry"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-emerald-700 hover:underline flex items-center gap-1.5"
+                    >
+                      <MessageCircle className="w-3.5 h-3.5 text-emerald-600" />
+                      <span>Line 1: +233 59 641 6623</span>
+                    </a>
+                  </div>
+                  <div>
+                    <a
+                      href="https://wa.me/233593592023?text=Welcome%20your%20inquiry"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-emerald-700 hover:underline flex items-center gap-1.5"
+                    >
+                      <MessageCircle className="w-3.5 h-3.5 text-emerald-600" />
+                      <span>Line 2: +233 59 359 2023</span>
+                    </a>
+                  </div>
                 </dd>
               </div>
               <div className="pb-3 border-b border-slate-100">
-                <dt className="text-xs text-slate-500">Email Address</dt>
+                <dt className="text-xs text-slate-500">Official Email</dt>
                 <dd className="font-mono font-semibold text-slate-900 mt-0.5">
-                  {settings?.email || '[BUSINESS EMAIL]'}
+                  <a href={`mailto:${settings?.email || 'wrmobile@163.com'}`} className="hover:underline text-slate-900">
+                    {settings?.email || 'wrmobile@163.com'}
+                  </a>
                 </dd>
               </div>
               <div>
                 <dt className="text-xs text-slate-500">Opening Hours</dt>
                 <dd className="font-semibold text-slate-900 mt-0.5">
-                  {settings?.openingHours || '[BUSINESS HOURS]'}
+                  {settings?.openingHours || 'Monday – Saturday: 8:00 AM – 6:00 PM GMT'}
                 </dd>
               </div>
             </dl>
 
-            <button
-              type="button"
-              onClick={() =>
-                openWhatsAppInquiry(
-                  `Hello ${brandName}, I am contacting you from your website Contact page.`
-                )
-              }
-              className="w-full flex items-center justify-center gap-2 py-3 px-4 bg-[#15803D] hover:bg-[#166534] text-white text-xs font-semibold rounded-xl transition-colors cursor-pointer"
-            >
-              <MessageCircle className="w-4 h-4" />
-              <span>Start WhatsApp Conversation</span>
-            </button>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+              <a
+                href="https://wa.me/2330596416623?text=Welcome%20your%20inquiry"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 py-2.5 px-3 bg-[#15803D] hover:bg-[#166534] text-white text-xs font-semibold rounded-xl transition-colors"
+              >
+                <MessageCircle className="w-4 h-4" />
+                <span>WhatsApp Line 1</span>
+              </a>
+              <a
+                href="https://wa.me/233593592023?text=Welcome%20your%20inquiry"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 py-2.5 px-3 bg-[#166534] hover:bg-[#14532d] text-white text-xs font-semibold rounded-xl transition-colors"
+              >
+                <MessageCircle className="w-4 h-4" />
+                <span>WhatsApp Line 2</span>
+              </a>
+            </div>
           </div>
 
           {/* Embedded Google Maps (Only rendered when a verified embed URL is configured in Admin) */}

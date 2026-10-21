@@ -65,11 +65,26 @@ export const VehicleDetailPage: React.FC = () => {
       setError(null);
       setSelectedImageIdx(0);
       try {
-        const res = await fetch(`/api/vehicles/${slug}`);
-        if (!res.ok) {
+        let data: Vehicle | null = null;
+        try {
+          const res = await fetch(`/api/vehicles/${slug}`);
+          if (res.ok) {
+            data = await res.json();
+          }
+        } catch {
+          // ignore and fallback
+        }
+
+        if (!data) {
+          const raw = await import('../data/wesrroadVehicles.json');
+          const allItems = (raw.default || raw) as unknown as Vehicle[];
+          data = allItems.find((v) => v.slug === slug) || null;
+        }
+
+        if (!data) {
           throw new Error('Vehicle listing not found or no longer available.');
         }
-        const data: Vehicle = await res.json();
+
         if (active) {
           setVehicle(data);
           const fullTitle = `${data.year} ${data.make} ${data.model} ${
