@@ -8,7 +8,7 @@ export const FaqPage: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [openId, setOpenId] = useState<number | null>(null);
 
-  const brandName = settings?.businessName || '[DEALERSHIP NAME]';
+  const brandName = settings?.businessName || 'WESRROAD';
 
   useEffect(() => {
     updatePageSeo(
@@ -119,7 +119,7 @@ export const LegalPage: React.FC<{ mode: 'privacy' | 'terms' }> = ({
   mode,
 }) => {
   const { settings, updatePageSeo } = useSite();
-  const brandName = settings?.businessName || '[DEALERSHIP NAME]';
+  const brandName = settings?.businessName || 'WESRROAD';
 
   const isPrivacy = mode === 'privacy';
   const title = isPrivacy
@@ -145,7 +145,7 @@ export const LegalPage: React.FC<{ mode: 'privacy' | 'terms' }> = ({
         </h1>
         <p className="text-xs text-slate-500">
           Dealership: {brandName} · Location:{' '}
-          {settings?.location || '[CITY, GHANA]'} · Editable in Admin Dashboard
+          {settings?.location || 'Accra, Ghana'}
         </p>
       </div>
 

@@ -55,7 +55,7 @@ export const HomePage: React.FC = () => {
   useEffect(() => {
     updatePageSeo(
       settings?.seoTitle ||
-        `${settings?.businessName || '[DEALERSHIP NAME]'} — Car Sales Dealership in Ghana`,
+        `${settings?.businessName || 'WESRROAD'} — Car Sales Dealership in Ghana`,
       settings?.seoDescription
     );
   }, [settings, updatePageSeo]);
@@ -130,7 +130,7 @@ export const HomePage: React.FC = () => {
     // Use defaults
   }
 
-  const brandName = settings?.businessName || '[DEALERSHIP NAME]';
+  const brandName = settings?.businessName || 'WESRROAD';
 
   return (
     <div>
@@ -217,7 +217,7 @@ export const HomePage: React.FC = () => {
                         <span>N1 Highway Accra</span>
                       </div>
                       <Link
-                        to={displayedVehicles[0] ? `/inventory/${displayedVehicles[0].slug}` : '/inventory'}
+                        to={displayedVehicles[0] ? `/vehicles/${displayedVehicles[0].slug}` : '/inventory'}
                         className="text-[#C89D54] hover:underline font-medium whitespace-nowrap"
                       >
                         View Vehicle Details →

@@ -48,7 +48,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({
     }
   }, [whatsAppModal.isOpen, whatsAppModal.message]);
 
-  const brandName = settings?.businessName || '[DEALERSHIP NAME]';
+  const brandName = settings?.businessName || 'WESRROAD';
   const configuredWaUrl = getFormattedWhatsAppUrl(
     editableMessage || whatsAppModal.message
   );
@@ -616,22 +616,37 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({
                   Official Channels
                 </div>
                 <div className="flex flex-wrap gap-2 text-xs text-slate-400">
-                  <span className="px-2 py-1 bg-slate-800 rounded text-[11px] text-slate-300">
-                    X · WESRROAD
-                  </span>
-                  <span className="px-2 py-1 bg-slate-800 rounded text-[11px] text-slate-300">
-                    Facebook · WESRROAD
-                  </span>
-                  <span className="px-2 py-1 bg-slate-800 rounded text-[11px] text-slate-300">
-                    Instagram · WESRROAD
-                  </span>
+                  <a
+                    href="https://twitter.com/wesrroad"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 rounded text-[11px] text-slate-300 transition-colors"
+                  >
+                    X (Twitter)
+                  </a>
+                  <a
+                    href="https://facebook.com/wesrroad"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 rounded text-[11px] text-slate-300 transition-colors"
+                  >
+                    Facebook
+                  </a>
+                  <a
+                    href="https://instagram.com/wesrroad"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 rounded text-[11px] text-slate-300 transition-colors"
+                  >
+                    Instagram
+                  </a>
                   <a
                     href="https://tiktok.com/@westroadauto"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-2 py-1 bg-slate-800 hover:bg-slate-700 rounded text-[11px] text-slate-300 transition-colors"
+                    className="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 rounded text-[11px] text-slate-300 transition-colors"
                   >
-                    TikTok · @westroadauto
+                    TikTok
                   </a>
                 </div>
               </div>
@@ -650,7 +665,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({
           <div className="mt-12 pt-6 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
             <div>
               © {new Date().getFullYear()} {brandName}. Operating in{' '}
-              {settings?.location || '[CITY, GHANA]'}. All rights reserved.
+              {settings?.location || 'Accra, Ghana'}. All rights reserved.
             </div>
             <div className="flex items-center gap-4">
               <a

@@ -5,7 +5,7 @@ import { useSite } from '../context/SiteContext';
 
 export const ServicesPage: React.FC = () => {
   const { settings, services, openWhatsAppInquiry, updatePageSeo } = useSite();
-  const brandName = settings?.businessName || '[DEALERSHIP NAME]';
+  const brandName = settings?.businessName || 'WESRROAD';
 
   useEffect(() => {
     updatePageSeo(
@@ -21,14 +21,14 @@ export const ServicesPage: React.FC = () => {
       {/* Header */}
       <div className="max-w-3xl space-y-4">
         <div className="text-xs font-mono uppercase tracking-wider text-[#9A7332]">
-          Confirmed Dealership Capabilities · {settings?.location || '[CITY, GHANA]'}
+          Confirmed Dealership Capabilities · {settings?.location || 'Accra, Ghana'}
         </div>
         <h1 className="text-3xl sm:text-4xl font-bold text-slate-900 font-display tracking-tight headline-balance">
           Automotive Sales, Custom Sourcing & Pre-Purchase Inspections
         </h1>
         <p className="text-base text-slate-600 leading-relaxed">
           We only display services actively provided by {brandName}. Whether you
-          are purchasing from our yard in {settings?.location || '[CITY, GHANA]'}{' '}
+          are purchasing from our yard in {settings?.location || 'Accra, Ghana'}{' '}
           or commissioning a direct import to Tema Port, our team coordinates
           each stage with written documentation.
         </p>

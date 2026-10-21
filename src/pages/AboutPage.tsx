@@ -6,12 +6,12 @@ import { DEFAULT_WHY_CHOOSE_US } from '../constants/defaults';
 
 export const AboutPage: React.FC = () => {
   const { settings, openWhatsAppInquiry, updatePageSeo } = useSite();
-  const brandName = settings?.businessName || '[DEALERSHIP NAME]';
+  const brandName = settings?.businessName || 'WESRROAD';
 
   useEffect(() => {
     updatePageSeo(
       `About ${brandName} | Vehicle Dealership in ${
-        settings?.location || '[CITY, GHANA]'
+        settings?.location || 'Accra, Ghana'
       }`,
       settings?.aboutBackground?.slice(0, 155)
     );
@@ -32,7 +32,7 @@ export const AboutPage: React.FC = () => {
       {/* Header */}
       <div className="max-w-3xl space-y-4">
         <div className="text-xs font-mono uppercase tracking-wider text-[#9A7332]">
-          About the Dealership · {settings?.location || '[CITY, GHANA]'}
+          About the Dealership · {settings?.location || 'Accra, Ghana'}
         </div>
         <h1 className="text-3xl sm:text-4xl font-bold text-slate-900 font-display tracking-tight headline-balance">
           Committed to Verifiable Documentation and Straightforward Car Buying in
@@ -109,19 +109,19 @@ export const AboutPage: React.FC = () => {
             <div className="p-4 bg-[#F8F8F7] rounded-lg border border-slate-200/70">
               <dt className="text-xs text-slate-500">City & Market</dt>
               <dd className="font-semibold text-slate-900 mt-1">
-                {settings?.location || '[CITY, GHANA]'}
+                {settings?.location || 'Accra, Ghana'}
               </dd>
             </div>
             <div className="p-4 bg-[#F8F8F7] rounded-lg border border-slate-200/70">
               <dt className="text-xs text-slate-500">Physical Address</dt>
               <dd className="font-semibold text-slate-900 mt-1">
-                {settings?.address || '[PHYSICAL ADDRESS]'}
+                {settings?.address || 'Along the N1 Highway, Accra, Ghana'}
               </dd>
             </div>
             <div className="p-4 bg-[#F8F8F7] rounded-lg border border-slate-200/70">
               <dt className="text-xs text-slate-500">Opening Hours</dt>
               <dd className="font-semibold text-slate-900 mt-1">
-                {settings?.openingHours || '[BUSINESS HOURS]'}
+                {settings?.openingHours || 'Monday – Saturday: 8:00 AM – 6:00 PM GMT'}
               </dd>
             </div>
             <div className="p-4 bg-[#F8F8F7] rounded-lg border border-slate-200/70">
@@ -153,9 +153,9 @@ export const AboutPage: React.FC = () => {
             vehicle ready for inspection and road testing.
           </p>
           <div className="space-y-2 text-xs font-mono text-slate-300">
-            <div>Phone: {settings?.phone || '[PHONE NUMBER]'}</div>
-            <div>WhatsApp: {settings?.whatsapp || '[WHATSAPP NUMBER]'}</div>
-            <div>Email: {settings?.email || '[BUSINESS EMAIL]'}</div>
+            <div>Phone: {settings?.phone || '+233 59 641 6623'}</div>
+            <div>WhatsApp: {settings?.whatsapp || '+233 59 641 6623'}</div>
+            <div>Email: {settings?.email || 'wrmobile@163.com'}</div>
           </div>
           <div className="pt-2 flex flex-col gap-2.5">
             <Link

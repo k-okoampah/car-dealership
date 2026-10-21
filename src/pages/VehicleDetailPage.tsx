@@ -268,7 +268,7 @@ export const VehicleDetailPage: React.FC = () => {
 
   const todayIso = new Date().toISOString().split('T')[0];
   const phoneConfigured =
-    settings?.phone && !settings.phone.includes('[') ? settings.phone : null;
+    settings?.phone && !settings.phone.includes('[') ? settings.phone : '+233 59 641 6623';
 
   // Structured Data JSON-LD for Individual Vehicle
   const vehicleJsonLd = {
@@ -484,7 +484,7 @@ export const VehicleDetailPage: React.FC = () => {
               <div className="flex justify-between py-2 border-b border-slate-100">
                 <dt className="text-slate-500">Viewing Location</dt>
                 <dd className="font-medium text-slate-900">
-                  {vehicle.location || settings?.location || '[CITY, GHANA]'}
+                  {vehicle.location || settings?.location || 'Accra, Ghana'}
                 </dd>
               </div>
               <div className="flex justify-between py-2 border-b border-slate-100">
@@ -584,7 +584,7 @@ export const VehicleDetailPage: React.FC = () => {
                 onClick={() =>
                   openWhatsAppInquiry(
                     `Hello ${
-                      settings?.businessName || '[DEALERSHIP NAME]'
+                      settings?.businessName || 'WESRROAD'
                     }, I am interested in the ${fullVehicleTitle} listed at ${formatPriceGHS(
                       effectivePrice
                     )} (${listingUrl}). Is it currently available for inspection?`,
@@ -609,7 +609,7 @@ export const VehicleDetailPage: React.FC = () => {
               ) : (
                 <div className="w-full flex items-center justify-center gap-2 py-2.5 px-4 bg-slate-100 text-slate-700 font-mono text-xs rounded-xl">
                   <Phone className="w-3.5 h-3.5" />
-                  <span>Sales Desk: {settings?.phone || '[PHONE NUMBER]'}</span>
+                  <span>Sales Desk: {settings?.phone || '+233 59 641 6623'}</span>
                 </div>
               )}
             </div>

@@ -48,7 +48,7 @@ export const InventoryPage: React.FC = () => {
     updatePageSeo(
       `Browse Available Cars in Ghana (${total} Vehicles)`,
       `Search and filter inspected SUVs, sedans, and 4x4 pickups priced in GH₵ at ${
-        settings?.businessName || '[DEALERSHIP NAME]'
+        settings?.businessName || 'WESRROAD'
       }.`
     );
   }, [total, settings?.businessName, updatePageSeo]);
@@ -198,7 +198,7 @@ export const InventoryPage: React.FC = () => {
           </h1>
           <p className="text-sm text-slate-600 mt-1">
             Search available new, foreign-used, and Ghana-registered vehicles in{' '}
-            {settings?.location || '[CITY, GHANA]'}. All prices in GH₵.
+            {settings?.location || 'Accra, Ghana'}. All prices in GH₵.
           </p>
         </div>
 

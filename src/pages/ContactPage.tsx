@@ -7,7 +7,7 @@ import { Vehicle } from '../types';
 export const ContactPage: React.FC = () => {
   const { settings, openWhatsAppInquiry, updatePageSeo } = useSite();
   const [searchParams] = useSearchParams();
-  const brandName = settings?.businessName || '[DEALERSHIP NAME]';
+  const brandName = settings?.businessName || 'WESRROAD';
 
   const initialType = searchParams.get('type') || 'General Inquiry';
   const [activeMode, setActiveMode] = useState<'inquiry' | 'testdrive'>(
@@ -48,7 +48,7 @@ export const ContactPage: React.FC = () => {
     updatePageSeo(
       `Contact Sales & Book a Test Drive | ${brandName}`,
       `Contact ${brandName} in ${
-        settings?.location || '[CITY, GHANA]'
+        settings?.location || 'Accra, Ghana'
       } by phone, WhatsApp, or online inquiry form.`
     );
   }, [brandName, settings?.location, updatePageSeo]);
@@ -175,7 +175,7 @@ export const ContactPage: React.FC = () => {
         <p className="text-sm text-slate-600 leading-relaxed">
           Submit a general question, request custom vehicle sourcing, propose a
           trade-in valuation, or book a physical inspection and test drive at
-          our showroom in {settings?.location || '[CITY, GHANA]'}.
+          our showroom in {settings?.location || 'Accra, Ghana'}.
         </p>
       </div>
 
@@ -191,13 +191,13 @@ export const ContactPage: React.FC = () => {
               <div className="pb-3 border-b border-slate-100">
                 <dt className="text-xs text-slate-500">Business Location</dt>
                 <dd className="font-semibold text-slate-900 mt-0.5">
-                  {settings?.location || '[CITY, GHANA]'}
+                  {settings?.location || 'Accra, Ghana'}
                 </dd>
               </div>
               <div className="pb-3 border-b border-slate-100">
                 <dt className="text-xs text-slate-500">Physical Address</dt>
                 <dd className="font-semibold text-slate-900 mt-0.5">
-                  {settings?.address || '[PHYSICAL ADDRESS]'}
+                  {settings?.address || 'Along the N1 Highway, Accra, Ghana'}
                 </dd>
               </div>
               <div className="pb-3 border-b border-slate-100">
@@ -285,14 +285,16 @@ export const ContactPage: React.FC = () => {
               />
             </div>
           ) : (
-            <div className="bg-white border border-slate-200 rounded-xl p-5 text-xs text-slate-500 leading-relaxed">
-              <strong className="text-slate-800 block mb-1">
-                Showroom Map & Directions
+            <div className="bg-white border border-slate-200 rounded-xl p-5 text-xs text-slate-600 leading-relaxed space-y-2">
+              <strong className="text-slate-900 block text-sm font-semibold font-display">
+                Showroom Location & Directions
               </strong>
-              Physical address: {settings?.address || '[PHYSICAL ADDRESS]'},{' '}
-              {settings?.location || '[CITY, GHANA]'}. Once the dealership
-              supplies a verified Google Maps embed URL in the Admin Dashboard,
-              the interactive map pin will appear here automatically.
+              <p>
+                Our facility is located at {settings?.address || 'Along the N1 Highway, Accra, Ghana'}.
+              </p>
+              <p className="text-slate-500 text-[11px]">
+                Prospective buyers are welcome to schedule physical mechanical walk-arounds, on-site diagnostics, or coordinate direct port deliveries.
+              </p>
             </div>
           )}
         </div>
