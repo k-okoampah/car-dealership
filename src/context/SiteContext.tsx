@@ -170,12 +170,14 @@ export const SiteProvider: React.FC<{ children: React.ReactNode }> = ({
 
   const getFormattedWhatsAppUrl = useCallback(
     (message: string) => {
-      const cleanNumber = formatGhanaPhoneForWhatsApp(settings?.whatsapp || '');
+      const cleanNumber = formatGhanaPhoneForWhatsApp(
+        settings?.whatsapp || '+233557107217'
+      );
       const encoded = encodeURIComponent(message);
       if (cleanNumber) {
         return `https://wa.me/${cleanNumber}?text=${encoded}`;
       }
-      return null;
+      return `https://wa.me/233557107217?text=${encoded}`;
     },
     [settings?.whatsapp]
   );

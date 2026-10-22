@@ -44,11 +44,17 @@ export const VehicleCard: React.FC<VehicleCardProps> = ({
         to={`/vehicles/${vehicle.slug}`}
         className="group flex flex-col md:flex-row bg-white border border-slate-200/90 rounded-xl overflow-hidden transition-transform duration-150 hover:-translate-y-0.5"
       >
-        <div className="md:w-80 lg:w-96 aspect-[4/3] bg-[#14181F] shrink-0 overflow-hidden">
+        <div className="md:w-80 lg:w-96 aspect-[16/10] bg-[#0E1116] shrink-0 overflow-hidden relative flex items-center justify-center">
+          <img
+            src={primaryImage}
+            alt=""
+            aria-hidden="true"
+            className="absolute inset-0 w-full h-full object-cover opacity-20 blur-md scale-110 pointer-events-none"
+          />
           <VehicleImage
             src={primaryImage}
             alt={primaryAlt}
-            className="w-full h-full object-cover transition-transform duration-200 group-hover:scale-[1.02]"
+            className="relative z-10 w-full h-full object-contain p-1.5 transition-transform duration-200 group-hover:scale-[1.03]"
           />
         </div>
         <div className="flex-1 p-6 flex flex-col justify-between">
@@ -137,11 +143,17 @@ export const VehicleCard: React.FC<VehicleCardProps> = ({
       to={`/vehicles/${vehicle.slug}`}
       className="group flex flex-col bg-white border border-slate-200/90 rounded-xl overflow-hidden transition-transform duration-150 hover:-translate-y-0.5"
     >
-      <div className="aspect-[4/3] w-full bg-[#14181F] overflow-hidden">
+      <div className="relative aspect-[16/10] w-full bg-[#0E1116] overflow-hidden flex items-center justify-center">
+        <img
+          src={primaryImage}
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 w-full h-full object-cover opacity-20 blur-md scale-110 pointer-events-none"
+        />
         <VehicleImage
           src={primaryImage}
           alt={primaryAlt}
-          className="w-full h-full object-cover transition-transform duration-200 group-hover:scale-[1.02]"
+          className="relative z-10 w-full h-full object-contain p-1.5 transition-transform duration-200 group-hover:scale-[1.03]"
         />
       </div>
 

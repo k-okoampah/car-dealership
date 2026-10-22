@@ -203,8 +203,8 @@ export const ContactPage: React.FC = () => {
               <div className="pb-3 border-b border-slate-100">
                 <dt className="text-xs text-slate-500">Telephone / Sales Desk</dt>
                 <dd className="font-mono font-semibold text-slate-900 mt-0.5">
-                  <a href={`tel:${settings?.phone || '+233596416623'}`} className="hover:underline">
-                    {settings?.phone || '+233 59 641 6623'}
+                  <a href={`tel:${settings?.phone || '+233557107217'}`} className="hover:underline">
+                    {settings?.phone || '+233 55 710 7217'}
                   </a>
                 </dd>
               </div>
@@ -213,13 +213,13 @@ export const ContactPage: React.FC = () => {
                 <dd className="font-mono font-semibold text-slate-900 mt-0.5 space-y-1">
                   <div>
                     <a
-                      href="https://wa.me/2330596416623?text=Welcome%20your%20inquiry"
+                      href="https://wa.me/233557107217?text=Welcome%20your%20inquiry"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-emerald-700 hover:underline flex items-center gap-1.5"
                     >
                       <MessageCircle className="w-3.5 h-3.5 text-emerald-600" />
-                      <span>Line 1: +233 59 641 6623</span>
+                      <span>Line 1: +233 55 710 7217</span>
                     </a>
                   </div>
                   <div>

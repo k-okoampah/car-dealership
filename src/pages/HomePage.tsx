@@ -14,6 +14,9 @@ import {
   DEFAULT_BUYING_PROCESS,
   DEFAULT_WHY_CHOOSE_US,
 } from '../constants/defaults';
+import staticVehiclesRaw from '../data/wesrroadVehicles.json';
+
+const staticVehicles = staticVehiclesRaw as unknown as Vehicle[];
 
 const BODY_CATEGORIES = [
   'All',
@@ -37,8 +40,10 @@ export const HomePage: React.FC = () => {
   } = useSite();
   const navigate = useNavigate();
 
-  const [vehiclesList, setVehiclesList] = useState<Vehicle[]>([]);
-  const [loadingVehicles, setLoadingVehicles] = useState(true);
+  const [vehiclesList, setVehiclesList] = useState<Vehicle[]>(() =>
+    Array.isArray(staticVehicles) && staticVehicles.length > 0 ? staticVehicles : []
+  );
+  const [loadingVehicles, setLoadingVehicles] = useState(false);
   const [collectionTab, setCollectionTab] = useState<'featured' | 'recent'>(
     'featured'
   );
@@ -63,15 +68,16 @@ export const HomePage: React.FC = () => {
   useEffect(() => {
     let active = true;
     const loadVehicles = async () => {
-      setLoadingVehicles(true);
       try {
-        const res = await fetch('/api/vehicles?limit=24&sort=newest');
+        const res = await fetch('/api/vehicles?limit=30&sort=newest');
         if (res.ok && active) {
           const data = await res.json();
-          setVehiclesList(data.vehicles || []);
+          if (Array.isArray(data.vehicles) && data.vehicles.length > 0) {
+            setVehiclesList(data.vehicles);
+          }
         }
       } catch (err) {
-        console.error('Failed to load homepage vehicles:', err);
+        console.warn('API vehicle fetch error, staying on static verified stock:', err);
       } finally {
         if (active) setLoadingVehicles(false);
       }
@@ -93,26 +99,32 @@ export const HomePage: React.FC = () => {
     navigate(`/inventory?${params.toString()}`);
   };
 
-  const displayedVehicles = vehiclesList
-    .filter((v) => {
-      if (selectedCategory !== 'All' && v.bodyType !== selectedCategory) {
-        return false;
-      }
-      if (collectionTab === 'featured') {
-        return v.featuredStatus;
-      }
-      return true;
-    })
-    .slice(0, 6);
+  const allAvailable = vehiclesList.length > 0 ? vehiclesList : staticVehicles;
 
-  const fallbackVehicles =
-    displayedVehicles.length > 0
-      ? displayedVehicles
-      : vehiclesList
-          .filter(
-            (v) => selectedCategory === 'All' || v.bodyType === selectedCategory
-          )
-          .slice(0, 6);
+  // Filter by body category (case-tolerant)
+  const categoryVehicles = allAvailable.filter((v) => {
+    if (selectedCategory === 'All') return true;
+    const cat = selectedCategory.toLowerCase();
+    const body = (v.bodyType || '').toLowerCase();
+    return body === cat || body.includes(cat);
+  });
+
+  // Filter by featured status if featured tab is selected
+  const featuredInCat = categoryVehicles.filter((v) => v.featuredStatus);
+
+  // Progressive fallback chain:
+  // 1. If 'featured' tab selected and has featured cars in this category -> show them
+  // 2. If 'recent' tab or no featured in category -> show all cars in this category
+  // 3. If category has zero cars -> show all available inventory
+  const displayedVehicles = (
+    collectionTab === 'featured' && featuredInCat.length > 0
+      ? featuredInCat
+      : categoryVehicles.length > 0
+      ? categoryVehicles
+      : allAvailable
+  ).slice(0, 6);
+
+  const fallbackVehicles = displayedVehicles;
 
   let whyChooseUsList = DEFAULT_WHY_CHOOSE_US;
   let buyingProcessList = DEFAULT_BUYING_PROCESS;

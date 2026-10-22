@@ -29,6 +29,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({
     closeWhatsAppModal,
     openWhatsAppInquiry,
     getFormattedWhatsAppUrl,
+    currentUser,
   } = useSite();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
@@ -161,7 +162,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({
             Browse Cars
           </NavLink>
           <NavLink
-            to="/services"
+            to="/faq"
             className={({ isActive }) =>
               `transition-colors whitespace-nowrap shrink-0 py-1 border-b-2 ${
                 isActive
@@ -170,19 +171,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({
               }`
             }
           >
-            Services
-          </NavLink>
-          <NavLink
-            to="/about"
-            className={({ isActive }) =>
-              `transition-colors whitespace-nowrap shrink-0 py-1 border-b-2 ${
-                isActive
-                  ? 'text-slate-900 border-slate-900 font-semibold'
-                  : 'border-transparent hover:text-slate-900 hover:border-slate-300'
-              }`
-            }
-          >
-            About Us
+            FAQs
           </NavLink>
           <NavLink
             to="/contact"
@@ -200,61 +189,110 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({
 
         {/* Zone 3: 1 primary action */}
         <div className="flex items-center gap-3 shrink-0">
-          <button
-            type="button"
-            onClick={() =>
-              openWhatsAppInquiry(
-                `Hello ${brandName}, I am browsing your website (${window.location.origin}) and would like to speak with a sales representative regarding available vehicles in Ghana.`
-              )
-            }
-            className="px-4 py-2 text-xs font-semibold text-white bg-[#111315] rounded-lg hover:bg-slate-800 transition-colors whitespace-nowrap shrink-0 cursor-pointer"
+          <a
+            href="https://wa.me/233557107217?text=Hello%20WESTROAD%2C%20I%20would%20like%20to%20inquire%20about%20your%20vehicles%20in%20Ghana."
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Contact Sales on WhatsApp"
+            className="inline-flex items-center gap-2 px-4 py-2 text-xs font-semibold text-white bg-[#15803D] hover:bg-[#166534] rounded-lg transition-colors whitespace-nowrap shrink-0 cursor-pointer shadow-xs"
           >
-            Contact Sales
-          </button>
+            <MessageCircle className="w-4 h-4 text-white" />
+            <span>Contact Sales</span>
+          </a>
 
           <button
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle navigation menu"
-            className="md:hidden p-2 text-slate-700 hover:text-slate-900 rounded-lg"
+            className="md:hidden p-2 text-slate-800 hover:text-slate-950 rounded-lg cursor-pointer transition-colors"
           >
             {mobileMenuOpen ? (
-              <X className="w-5 h-5" />
+              <X className="w-6 h-6" />
             ) : (
-              <Menu className="w-5 h-5" />
+              <Menu className="w-6 h-6" />
             )}
           </button>
         </div>
       </header>
 
-      {/* Mobile Menu Drawer */}
+      {/* Mobile Menu Backdrop Overlay */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-white border-b border-slate-200 px-6 py-4 space-y-3">
-          <div className="flex flex-col space-y-2 text-sm font-medium text-slate-700">
-            <Link to="/" className="py-1.5 hover:text-slate-900">
-              Home
-            </Link>
-            <Link to="/inventory" className="py-1.5 hover:text-slate-900">
-              Browse Cars
-            </Link>
-            <Link to="/services" className="py-1.5 hover:text-slate-900">
-              Services
-            </Link>
-            <Link to="/about" className="py-1.5 hover:text-slate-900">
-              About Us
-            </Link>
-            <Link to="/faq" className="py-1.5 hover:text-slate-900">
-              FAQs
-            </Link>
-            <Link to="/contact" className="py-1.5 hover:text-slate-900">
-              Contact
+        <div
+          className="fixed inset-0 top-16 bg-black/50 backdrop-blur-xs z-40 md:hidden transition-opacity"
+          onClick={() => setMobileMenuOpen(false)}
+          aria-hidden="true"
+        />
+      )}
+
+      {/* Mobile Menu Drawer (Guaranteed visible at any scroll position) */}
+      {mobileMenuOpen && (
+        <div
+          className="fixed inset-x-0 top-16 z-50 md:hidden bg-white border-b border-slate-200 shadow-2xl max-h-[calc(100vh-4rem)] overflow-y-auto px-6 py-5 space-y-4"
+        >
+          <nav className="flex flex-col space-y-1 text-sm font-medium text-slate-800">
+            <Link
+              to="/"
+              onClick={() => setMobileMenuOpen(false)}
+              className="py-2.5 px-3 rounded-lg hover:bg-slate-100 flex items-center justify-between transition-colors"
+            >
+              <span>Home</span>
             </Link>
             <Link
-              to="/admin"
-              className="py-1.5 text-slate-500 hover:text-slate-900 border-t border-slate-100 pt-2"
+              to="/inventory"
+              onClick={() => setMobileMenuOpen(false)}
+              className="py-2.5 px-3 rounded-lg hover:bg-slate-100 flex items-center justify-between transition-colors"
             >
-              Admin Dashboard
+              <span>Browse Inventory</span>
+              <span className="text-[11px] font-semibold bg-[#C89D54]/15 text-[#855D1C] px-2 py-0.5 rounded-full">
+                All Cars
+              </span>
             </Link>
+
+            <Link
+              to="/faq"
+              onClick={() => setMobileMenuOpen(false)}
+              className="py-2.5 px-3 rounded-lg hover:bg-slate-100 transition-colors"
+            >
+              FAQs & Policies
+            </Link>
+            <Link
+              to="/contact"
+              onClick={() => setMobileMenuOpen(false)}
+              className="py-2.5 px-3 rounded-lg hover:bg-slate-100 transition-colors"
+            >
+              Contact & Showroom Location
+            </Link>
+            {currentUser && (
+              <Link
+                to="/admin"
+                onClick={() => setMobileMenuOpen(false)}
+                className="py-2.5 px-3 text-xs text-amber-700 hover:text-amber-900 border-t border-slate-100 pt-3 transition-colors flex items-center justify-between"
+              >
+                <span>Admin Console</span>
+                <span className="text-[10px] bg-amber-100 text-amber-800 px-1.5 py-0.5 rounded font-mono">
+                  Staff
+                </span>
+              </Link>
+            )}
+          </nav>
+
+          <div className="pt-3 border-t border-slate-100 flex flex-col gap-2.5">
+            <a
+              href="https://wa.me/233557107217?text=Hello%20WESTROAD%2C%20I%20would%20like%20to%20inquire%20about%20your%20vehicles%20in%20Ghana."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full flex items-center justify-center gap-2 py-2.5 px-4 bg-[#15803D] hover:bg-[#166534] text-white text-xs font-semibold rounded-lg shadow-xs cursor-pointer transition-colors"
+            >
+              <MessageCircle className="w-4 h-4" />
+              <span>Contact Sales on WhatsApp (+233 55 710 7217)</span>
+            </a>
+            <a
+              href="tel:+233557107217"
+              className="w-full flex items-center justify-center gap-2 py-2.5 px-4 bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold rounded-lg transition-colors"
+            >
+              <Phone className="w-4 h-4 text-[#C89D54]" />
+              <span>Call Sales: +233 55 710 7217</span>
+            </a>
           </div>
         </div>
       )}
@@ -510,25 +548,25 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({
                     <span className="text-slate-400">Direct Telephone:</span>
                   </div>
                   <a
-                    href="tel:+233596416623"
+                    href="tel:+233557107217"
                     className="font-mono text-white hover:text-[#C89D54] transition-colors"
                   >
-                    +233 59 641 6623
+                    +233 55 710 7217
                   </a>
                 </div>
 
                 <div className="flex items-center justify-between gap-3 text-xs pt-2 border-t border-slate-800/80">
                   <div className="flex items-center gap-2">
                     <MessageCircle className="w-3.5 h-3.5 text-emerald-400" />
-                    <span className="text-slate-400">WhatsApp Sales 1:</span>
+                    <span className="text-slate-400">WhatsApp Sales:</span>
                   </div>
                   <a
-                    href="https://wa.me/2330596416623?text=Welcome%20your%20inquiry"
+                    href="https://wa.me/233557107217?text=Welcome%20your%20inquiry"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="font-mono text-emerald-400 hover:underline"
                   >
-                    +233 59 641 6623
+                    +233 55 710 7217
                   </a>
                 </div>
 
