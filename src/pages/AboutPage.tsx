@@ -153,8 +153,8 @@ export const AboutPage: React.FC = () => {
             vehicle ready for inspection and road testing.
           </p>
           <div className="space-y-2 text-xs font-mono text-slate-300">
-            <div>Phone: {settings?.phone || '+233 55 710 7217'}</div>
-            <div>WhatsApp: {settings?.whatsapp || '+233 55 710 7217'}</div>
+            <div>Phone: {settings?.phone || '+233 59 641 6623'}</div>
+            <div>WhatsApp: {settings?.whatsapp || '+233 59 641 6623'}</div>
             <div>Email: {settings?.email || 'wrmobile@163.com'}</div>
           </div>
           <div className="pt-2 flex flex-col gap-2.5">

@@ -189,16 +189,17 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({
 
         {/* Zone 3: 1 primary action */}
         <div className="flex items-center gap-3 shrink-0">
-          <a
-            href="https://wa.me/233557107217?text=Hello%20WESTROAD%2C%20I%20would%20like%20to%20inquire%20about%20your%20vehicles%20in%20Ghana."
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Contact Sales on WhatsApp"
-            className="inline-flex items-center gap-2 px-4 py-2 text-xs font-semibold text-white bg-[#15803D] hover:bg-[#166534] rounded-lg transition-colors whitespace-nowrap shrink-0 cursor-pointer shadow-xs"
+          <button
+            type="button"
+            onClick={() =>
+              openWhatsAppInquiry(
+                `Hello ${brandName}, I am browsing your website (${window.location.origin}) and would like to speak with a sales representative regarding available vehicles in Ghana.`
+              )
+            }
+            className="px-4 py-2 text-xs font-semibold text-white bg-[#111315] rounded-lg hover:bg-slate-800 transition-colors whitespace-nowrap shrink-0 cursor-pointer"
           >
-            <MessageCircle className="w-4 h-4 text-white" />
-            <span>Contact Sales</span>
-          </a>
+            Contact Sales
+          </button>
 
           <button
             type="button"
@@ -277,21 +278,25 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({
           </nav>
 
           <div className="pt-3 border-t border-slate-100 flex flex-col gap-2.5">
-            <a
-              href="https://wa.me/233557107217?text=Hello%20WESTROAD%2C%20I%20would%20like%20to%20inquire%20about%20your%20vehicles%20in%20Ghana."
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
+              type="button"
+              onClick={() => {
+                setMobileMenuOpen(false);
+                openWhatsAppInquiry(
+                  `Hello ${brandName}, I am browsing your website on mobile and would like to speak with a sales representative regarding available vehicles.`
+                );
+              }}
               className="w-full flex items-center justify-center gap-2 py-2.5 px-4 bg-[#15803D] hover:bg-[#166534] text-white text-xs font-semibold rounded-lg shadow-xs cursor-pointer transition-colors"
             >
               <MessageCircle className="w-4 h-4" />
-              <span>Contact Sales on WhatsApp (+233 55 710 7217)</span>
-            </a>
+              <span>Inquire via WhatsApp</span>
+            </button>
             <a
-              href="tel:+233557107217"
+              href="tel:+233596416623"
               className="w-full flex items-center justify-center gap-2 py-2.5 px-4 bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold rounded-lg transition-colors"
             >
               <Phone className="w-4 h-4 text-[#C89D54]" />
-              <span>Call Sales: +233 55 710 7217</span>
+              <span>Call Sales: +233 59 641 6623</span>
             </a>
           </div>
         </div>
@@ -548,25 +553,25 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({
                     <span className="text-slate-400">Direct Telephone:</span>
                   </div>
                   <a
-                    href="tel:+233557107217"
+                    href="tel:+233596416623"
                     className="font-mono text-white hover:text-[#C89D54] transition-colors"
                   >
-                    +233 55 710 7217
+                    +233 59 641 6623
                   </a>
                 </div>
 
                 <div className="flex items-center justify-between gap-3 text-xs pt-2 border-t border-slate-800/80">
                   <div className="flex items-center gap-2">
                     <MessageCircle className="w-3.5 h-3.5 text-emerald-400" />
-                    <span className="text-slate-400">WhatsApp Sales:</span>
+                    <span className="text-slate-400">WhatsApp Sales 1:</span>
                   </div>
                   <a
-                    href="https://wa.me/233557107217?text=Welcome%20your%20inquiry"
+                    href="https://wa.me/2330596416623?text=Welcome%20your%20inquiry"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="font-mono text-emerald-400 hover:underline"
                   >
-                    +233 55 710 7217
+                    +233 59 641 6623
                   </a>
                 </div>
 
